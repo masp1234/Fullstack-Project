@@ -1,30 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
 
+
+h1{
+    font-family: 'Raleway', sans-serif;
+}
+
+p{
+    font-family: 'Merriweather', serif;
+}
+button{
+    font-family: 'Merriweather', serif;
+}
+
 .start{
     background: linear-gradient(143deg,#FFD898,#F9EAC2 85%);
     display: flex;
-    flex-direction: column;
     align-items:flex-start;
-    padding-left: 20px;
+    padding-left: 70px;
     padding-bottom: 30px;
+}
+.rightStart{
+    margin-left: 350px;
 }
 .start h1{
 padding-top: 80px;
 color: black;
 font-size: 55px;
-margin: 15px 0;
-font-family: 'Raleway', sans-serif;
+margin: 20px 0;
 }
 .start p{
     color: rgb(46, 42, 42);
     font-size: 30px;
     margin: 15px 0;
-    font-family: 'Merriweather', serif;
 }
 .start button{
-    padding: 15px 35px 15px 35px;
+    padding: 20px 40px;
     margin: 15px 0;
+    font-size: 25px;
 }
 
 
@@ -32,7 +45,9 @@ font-family: 'Raleway', sans-serif;
 .secondContainer{
     display: flex;
     justify-content: space-around;
-    margin-top: 130px;
+    margin-top: 150px;
+   
+    
 }
 .secondContainer1, .secondContainer2, .secondContainer3 {
     display: flex;
@@ -43,14 +58,12 @@ font-family: 'Raleway', sans-serif;
     color: #363636;
     font-size: 35px;
     font-weight: 600;
-    font-family: 'Raleway', sans-serif;
 
 }
 .secondContainer1 p, .secondContainer2 p, .secondContainer3 p{
     color: #363636;
     font-size: 20px;
     font-weight: 400;
-    font-family: 'Merriweather', serif;
 
 }
 .secondContainer1 i, .secondContainer2 i, .secondContainer3 i{
@@ -59,19 +72,26 @@ font-family: 'Raleway', sans-serif;
 }
 
 
-.lastContainer{
-    margin-top: 80px;
+.factContainer{
+    margin-top: 120px;
     padding-top: 30px;
     background-color: #FFD898;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     padding-bottom: 30px;
+    height: 300px;
 }
-.lastContainer h1, .lastContainer p{
-    color: white;
+.factContainer h1{
+    color: #363636;
+    font-size: 47px;
 }
-.lastContainer button{
+.factContainer p{
+    color: #363636;
+    font-size: 25px;
+}
+.factContainer button{
     padding: 10px 25px 10px 25px;
 }
 
@@ -80,9 +100,6 @@ font-family: 'Raleway', sans-serif;
 
 
 
-body{
-    margin: 0;
-}
 
 .navbar{
 
@@ -97,24 +114,36 @@ body{
 
 
 }
+.right-navbar{
+    margin-top: 1rem;
+    margin-right: 30px;
+}
 .ul-navbar li a{
+    
     display: block;
     padding: 0 25px;
-    font-family: 'Raleway', sans-serif;
     font-size: 27px;
     font-weight: bold;
     color: black;
     text-decoration: none;
+    transition: 0.5s;
 
-
-
+}
+.ul-navbar li a:hover {
+    color: #FFD898;
+    border-bottom-style: double;
+    padding-bottom: 4px;
 }
 
 
+
 ul{
+    
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style-type: none;
+    align-items: center;
+    
 
 }
 
@@ -123,15 +152,49 @@ ul{
 }
 
 .logoContainer h1 {
-    color: black;
+    color: #fcc368;
     height: 100%;
     display: table-cell;
     vertical-align: middle;
-    font-family: 'Raleway', sans-serif;
     font-size: 35px;
     font-weight: 100;
 }
-.logoContainer h1 span { /*WASTE*/
-    font-weight: 900;
+.logoContainer h1 span {
+    font-weight: 800;
 
+}
+
+
+
+
+
+
+
+.downloadContainer{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 150px;
+    display: flex;
+    
+    
+}
+.downloadText p{
+    font-size: 22px;
+}
+
+.downloadText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.downloadText h1{
+    font-weight: 900;
+    font-size: 40px;
+    padding: 50px, 0;
+    margin-bottom: 30px;
+
+}
+#download{
+    width: 380px;
 }
