@@ -16,7 +16,7 @@ body {
 }
 
 
-.signUpContainer { /*2 <h1 class="tilmelding"/h1>*/
+.signUpContainer {
     align-self: center;
     color: black;
     font-weight: 500;
@@ -44,7 +44,7 @@ body {
 
 }
 
-.container .title::before { /*TILMELDING*/
+.container .title::before { /*TITEL*/
     content: '';
     position: absolute;
     height: 2px;
@@ -112,5 +112,9 @@ button { /*"Tilmeld"-BUTTON*/
 button:active {
     position: relative;
     top: 2px;
+}
 
+button:hover {
+    background: #ffbb4c;
+    border: #ffbb4c;
 }

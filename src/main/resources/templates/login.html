@@ -7,7 +7,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Raleway:wght@500&display=swap');
     </style>
     <link rel="stylesheet" href="/src/main/resources/static/styles/loginStyle.css"
-          th:href="@{/styles/signUpStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
+          th:href="@{loginStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
+    <link rel="stylesheet" href="/src/main/resources/static/loginStyle.css"
+          th:href="@{/styles/loginStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,25 +18,27 @@
 </head>
 <body>
 <div class="container">
-    <div class="signUpContainer">
+    <div class="loginContainer">
         <h1 class="title">LOG IND
         </h1>
-        <form action="#" onsubmit="location.href='/confirmation'; return false;"> <!--Til <input>: https://www.w3schools.com/html/html_forms.asp-->
+        <form action="/login" method="POST">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details-button">E-mail</span>
-                    <input type="text" placeholder=" Indtast dit fornavn" required>
+
+                    <label for="email">EMAIL</label>
+                    <input type="text" name="email" id="email" placeholder=" Indtast e-mail" required>
                     <!--Kommer ikke videre hvis feltet ikke er indtastet-->
                 </div>
                 <div class="input-box">
-                    <span class="details-button">KODEORD</span>
-                    <input type="text" placeholder=" Indtast dit efternavn" required>
+                    <label for="password">PASSWORD</label>
+                    <input type="password" name="password"
+                           id="password" placeholder=" Indtast kodeord" required>
                 </div>
-                <li><a href="#">Glemt kodeord?</a></li>
-                <div class="button"><a href="/confirmation"></a>
-                    <input type="submit" value="Log ind"/>
-                </div>
+                <button type="submit">LOG IND</button>
+               <div> <link><a href="#">Glemt kodeord?</a></link></div>
+
             </div>
+
         </form>
     </div>
 </div>
