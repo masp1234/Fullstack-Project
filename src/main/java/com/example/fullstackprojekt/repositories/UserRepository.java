@@ -18,7 +18,7 @@ public class UserRepository {
 
 
     public void createUser(User user) {
-/*
+
         String query = "INSERT INTO user (user_email, user_password, user_firstname, user_lastname) VALUES(?, ?, ?, ?)";
 
         try {
@@ -34,22 +34,6 @@ public class UserRepository {
             System.out.println("kan ikke indsætte bruger");
             e.printStackTrace();
         }
-
- */
-        String query2 = "INSERT INTO user (user_email, user_password, user_firstname, user_lastname) VALUES(?, ?, ?, ?)";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query2);
-
-            preparedStatement.setString(1, "sdsdffd@gmail.com");
-            preparedStatement.setString(2, "123123");
-            preparedStatement.setString(3, "bob");
-            preparedStatement.setString(4, "bobsen");
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("kan ikke indsætte bruger");
-            e.printStackTrace();
-        }
-
 
     }
 
