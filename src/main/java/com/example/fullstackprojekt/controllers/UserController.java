@@ -15,7 +15,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value ="/sign_up")
+
+
+    @PostMapping(value ="/sign-up")
     public String createUser(@ModelAttribute User user) {
         //Opretter user
         userService.createUser(user);
