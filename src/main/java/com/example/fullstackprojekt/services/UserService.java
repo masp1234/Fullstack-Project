@@ -1,7 +1,7 @@
 package com.example.fullstackprojekt.services;
 
+import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.repositories.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,5 +12,9 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public void createUser(User user) {
+        userRepository.createUser(user);
     }
 }

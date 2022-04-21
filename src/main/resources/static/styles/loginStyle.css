@@ -42,8 +42,8 @@ body {
     text-align: center;
     font-family: 'Raleway', sans-serif;
     color: #FFD898;
-
 }
+
 .container .title::before{ /*TILMELDING*/
     content: '';
     position: absolute;
