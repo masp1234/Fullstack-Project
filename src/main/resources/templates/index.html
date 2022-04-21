@@ -14,10 +14,10 @@
 
 <div th:fragment="navbar" class="navbar">
   <div class="left-navbar">
-    <!--<a href="#">
-            <img class="" src="../static/images/FoodWaste-LOGO3.png" th:src="@{/images/FoodWaste-LOGO3.png}" alt="Logo">
-        </a>-->
     <div class="logoContainer">
+      <img class="logo" th:src="@{/logo.png}" src="../static/logo.png">
+    </div>
+    <div class="logoText">
       <h1>Ønske<span>Brønden</span></h1>
     </div>
   </div>
@@ -78,5 +78,5 @@
 
 </div>
 
-<div th:insert="footer :: footer"></div>
+<!--<div th:replace="footer :: footer"></div>-->
 </body>
