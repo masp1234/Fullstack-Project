@@ -10,4 +10,5 @@ public class ØnskeskyenController {
     public String index(){
         return "index.html";
     }
+
 }

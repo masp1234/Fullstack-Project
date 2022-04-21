@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap%27');
+
+
+.title {
+    font-family: Raleway;
+}
+.body-text {
+    font-family: Merriweather;
+}
+.table {
+    background-color: #F9EAC2;
+
+   
+}
