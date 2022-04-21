@@ -12,24 +12,23 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background: #FFFFFF;
+    background: #FFD898; /*Background*/
 }
 
 
 .signUpContainer { /*2 <h1 class="tilmelding"/h1>*/
-    height: 100vh;
-    justify-content: center /*gør intet for nu*/;
     align-self: center;
     color: black;
     font-weight: 500;
     font-family: 'Merriweather', serif;
     max-width: 400px;
     width: 100%;
-    max-height: 650px;
+    max-height: 550px;
     height: 100%;
-    background: #FEE7E6;
+    background: #FFFFFF; /*Border*/
     border-radius: 30px;
 }
+
 .user-details {
     margin: auto;
     position: center;
@@ -41,54 +40,62 @@ body {
     font-weight: 900;
     text-align: center;
     font-family: 'Raleway', sans-serif;
-    color: #FFFFFF;
+    color: #FFD898;
 
 }
-.container .title::before{ /*TILMELDING*/
+
+.container .title::before { /*TILMELDING*/
     content: '';
     position: absolute;
     height: 2px;
     width: 134px;
 
 }
+
 .container form .user-details {
     display: inline-block;
-    width: 250px;
+    width: 350px;
     text-align: left;
 }
+
 form .user-details .input-box {
     margin-bottom: 23px;
     max-width: 200px;
     width: 100%;
 }
-.user-details .input-box input{
+
+.user-details .input-box input {
     height: 45px;
     width: 100%;
 }
+
 .user-details .input-box .details {
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
 }
+
 .user-details .input-box input {
     height: 45px;
-    width: 119%;
+    width: 120%;
     outline: none;
     border-radius: 30px;
-    border: 1px solid #FFD898;
+    border: 1px solid #FEE7E6; /*Input border*/
     padding-left: 10px;
     font-size: 14px;
     transition: all 0.3s ease;
     box-shadow: 1px 2px #888888;
 }
+
 .user-details .input-box input:focus, /*Fokus på feltet skifter "borders" farve*/
 .user-details .input-box input:valid {
-    border-color: #ECFDF1;
+    border-color: #3EB489;
 }
 
-form .button input { /*"Tilmeld"-BUTTON*/
+button { /*"Tilmeld"-BUTTON*/
     height: 55px;
     width: 100%;
+    max-width: 254px;
     border-radius: 30px;
     border: 1px solid #F9EAC2;
     transition: all 0.3s ease;
@@ -99,12 +106,11 @@ form .button input { /*"Tilmeld"-BUTTON*/
     text-transform: uppercase;
     box-shadow: 1px 2px #888888;
     font-family: 'Raleway', sans-serif;
-}
-form .button:active {
     position: relative;
-    top: 1px;
 }
 
-.user-details .input-box span.details-button{
-    margin-bottom: 40px;
+button:active {
+    position: relative;
+    top: 2px;
+
 }
