@@ -17,26 +17,27 @@
 
     <h1 class="title">Navn på ønskeliste her</h1>
 
-    <table class="table">
+    <div class="table-responsive">
+
+    <table class="table table-hover table-striped table-bordered border-dark align-middle">
         <thead>
-            <tr>
-                <th class="table-title title">Name</th>
-                <th class="table-title title">Description</th>
-                <th class="table-title title">Price</th>
-                <th class="table-title title">Link</th>
-                <th class="table-title title">Reserved</th>
+            <tr class="align-middle">
+                <th scope="col" class="table-title title">Name</th>
+                <th scope="col" class="table-title title">Description</th>
+                <th scope="col" class="table-title title">Price</th>
+                <th scope="col" class="table-title title">Link</th>
+                <th scope="col" class="table-title title">Action</th>
 
 
 
             </tr>
         </thead>
         <tbody>
-            <tr scope="row" th:each="wish: ${wishlist}">
+            <tr class="align-middle" scope="row" th:each="wish: ${wishlist}">
                 <td th:text="${wish.name}" class="body-text">Nye sko</td>
                 <td th:text="${wish.description}" class="body-text">En kort beskrivelse af genstanden eller hvad man nu vil skrive her</td> 
                 <td th:text="${wish.price}" class="body-text">300</td>
                 <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
-                <td th:text="${wish.isReserved}" class="body-text">Ja</td>
                 <td>
                     <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Delete</a>
                 </td>
@@ -62,10 +63,6 @@
                         <input type="text" name="link" id="link" placeholder="Link here">
                     </td>
 
-                    <td>
-                        <input type="text" placeholder="Not reserved" readonly>
-                           
-                    </td>
 
                     <td>
                         <button type="submit" class="btn btn-success">Submit</button>
@@ -79,6 +76,7 @@
 
 
     </table>
+</div>
 
 
 </div>
