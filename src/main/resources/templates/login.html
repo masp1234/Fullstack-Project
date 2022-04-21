@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full-stack projekt - Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Raleway:wght@500&display=swap');
+    </style>
+    <link rel="stylesheet" href="/src/main/resources/static/loginStyle.css"
+          th:href="@{/styles/signUpStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+<body>
+<div class="container">
+    <div class="signUpContainer">
+        <h1 class="title">LOG IND
+        </h1>
+        <form action="#" onsubmit="location.href='/confirmation'; return false;"> <!--Til <input>: https://www.w3schools.com/html/html_forms.asp-->
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details-button">E-mail</span>
+                    <input type="text" placeholder=" Indtast dit fornavn" required>
+                    <!--Kommer ikke videre hvis feltet ikke er indtastet-->
+                </div>
+                <div class="input-box">
+                    <span class="details-button">KODEORD</span>
+                    <input type="text" placeholder=" Indtast dit efternavn" required>
+                </div>
+                <li><a href="#">Glemt kodeord?</a></li>
+                <div class="button"><a href="/confirmation"></a>
+                    <input type="submit" value="Log ind"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
