@@ -68,7 +68,7 @@ body {
     font-family: 'Merriweather', sans-serif;
 }
 
-/*.footer-col .socialMedia a{
+.footer-col .socialMedia a{
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -79,12 +79,14 @@ body {
     border-radius: 50%;
     color: #24262b;
     transition: all 0.5s ease;
-}*/
+}
 
 .footer-col .socialMedia a:hover{
     color: #24262b;
     background-color: #ffffff;
 }
+
+/*
 .fab {
     padding: 10px;
     font-size: 15px;
@@ -93,6 +95,7 @@ body {
     text-decoration: none;
     margin: 2px 7px;
 }
+
 .fa-instagram {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     color: white;
@@ -100,6 +103,7 @@ body {
     height: 30px;
     border-radius: 1.5vh;
 }
+ */
 
 @media(max-width: 767px){ /*Resolution https://www.w3schools.com/cssref/css3_pr_mediaquery.asp*/
     .footer-col{
