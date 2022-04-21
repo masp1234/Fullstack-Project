@@ -18,7 +18,7 @@ p{
 
 }
 .right-navbar{
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     margin-right: 30px;
 }
 .ul-navbar li a{
@@ -73,5 +73,6 @@ p{
 }
 
 li p{
-
+    margin-bottom: 0;
+    margin-top: 0.4rem;
 }
