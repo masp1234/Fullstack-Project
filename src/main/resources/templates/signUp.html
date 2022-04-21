@@ -21,25 +21,29 @@
     <div class="signUpContainer">
         <h1 class="title">TILMELD
         </h1>
-        <form action="/sign_up" method="POST" onsubmit="location.href='/'; return false;"> <!--Til <input>: https://www.w3schools.com/html/html_forms.asp-->
+        <form action="/sign-up" method="POST"> <!--Til <input>: https://www.w3schools.com/html/html_forms.asp-->
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details-button">FORNAVN</span>
-                    <input type="text" name="firstName" placeholder=" Indtast dit fornavn" required>
+
+                    <label for="firstName">FORNAVN</label>
+                    <input type="text" name="firstName" id="firstName" placeholder=" Indtast dit fornavn" required>
                     <!--Kommer ikke videre hvis feltet ikke er indtastet-->
                 </div>
                 <div class="input-box">
-                    <span class="details-button">EFTERNAVN</span>
-                    <input type="text" name="lastName" placeholder=" Indtast dit efternavn" required>
+                    <label for="lastName">EFTERNAVN</label>
+                    <input type="text" name="lastName" id="lastName" placeholder=" Indtast dit efternavn" required>
                 </div>
                 <div class="input-box">
-                    <span class="details-button">E-MAIL</span>
-                    <input type="email" name="email" placeholder=" Indtast din e-mail" required>
+                    <Label for="email">EMAIL</Label>
+                    <input type="email" name="email" id="email" placeholder=" Indtast din e-mail" required>
                 </div>
                 <div class="input-box">
-                    <span class="details-button">PASSWORD</span>
-                    <input type="password" name="password" placeholder=" Indtast password" required>
-                </div>
+                    <label for="password">PASSWORD</label>
+                    <input type="password" name="password"   
+                    id="password" placeholder=" Indtast password" required>
+
+                    <button type="submit">Tilmeld</button>
+
                 <!--<div class="input-box">
                     <script type="text/javascript">
                         var password = document.getElementById("password")
@@ -60,10 +64,11 @@
                     <input type="password" placeholder=" Gentag password" id="confirm_password" required>
                 </div>
                 -->
-                <div class="button"><a href="/confirmation"></a>
-                    <input type="submit" value="Tilmeld"/>
+               <!-- <div class="button"><a href="/ confirmation"></a> -->
+
                 </div>
             </div>
+
         </form>
     </div>
 </div>
