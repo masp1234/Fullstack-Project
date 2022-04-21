@@ -20,4 +20,8 @@ public class ØnskeskyenController {
     public String signUp(){
         return "signUp.html";
     }
+    @GetMapping("bruger-forside")
+    public String brugerForside(){
+        return "bruger-forside";
+    }
 }
