@@ -24,4 +24,8 @@ public class ØnskeskyenController {
     public String brugerForside(){
         return "bruger-forside";
     }
+    @GetMapping("/footer")
+    public String footer() {
+        return "footer";
+    }
 }
