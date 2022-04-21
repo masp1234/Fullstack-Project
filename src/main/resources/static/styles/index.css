@@ -198,3 +198,8 @@ margin: 20px 0;
 #download{
     width: 380px;
 }
+
+button a{
+    text-decoration: none;
+    color: black
+}
