@@ -1,0 +1,77 @@
+h1{
+    font-family: 'Raleway', sans-serif;
+}
+
+p{
+    font-family: 'Merriweather', serif;
+}
+
+
+
+
+.navbar{
+
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.right-navbar{
+    margin-top: 1rem;
+    margin-right: 30px;
+}
+.ul-navbar li a{
+
+    display: block;
+    padding: 0 25px;
+    font-size: 27px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    transition: 0.5s;
+
+}
+.ul-navbar li a:hover {
+    color: #FFD898;
+    border-bottom-style: double;
+    padding-bottom: 4px;
+}
+
+
+
+.ul-navbar{
+
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+
+
+}
+
+.left-navbar{
+    padding-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoText h1 {
+    color: black;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 35px;
+}
+.logoText h1 span {
+    font-weight: 900;
+
+}
+.logoText{
+    margin-left: 10px
+}
+
+li p{
+
+}
