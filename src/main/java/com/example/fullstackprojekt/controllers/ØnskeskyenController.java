@@ -1,5 +1,6 @@
 package com.example.fullstackprojekt.controllers;
 
+import com.example.fullstackprojekt.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -8,6 +9,8 @@ public class ØnskeskyenController {
 
     @GetMapping("/")
     public String index(){
+        UserRepository userRepository = new UserRepository();
+        userRepository.selectUserById(1);
         return "index.html";
     }
 
