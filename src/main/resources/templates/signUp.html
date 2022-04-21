@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full-stack projekt - Sign Up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Raleway:wght@500&display=swap');
+    </style>
+    <link rel="stylesheet" href="/src/main/resources/static/signUpStyle.css"
+          th:href="@{/styles/signUpStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+<body>
+<div class="container">
+    <div class="signUpContainer">
+        <h1 class="title">TILMELD
+        </h1>
+        <form action="#" onsubmit="location.href='/confirmation'; return false;"> <!--Til <input>: https://www.w3schools.com/html/html_forms.asp-->
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details-button">FORNAVN</span>
+                    <input type="text" placeholder=" Indtast dit fornavn" required>
+                    <!--Kommer ikke videre hvis feltet ikke er indtastet-->
+                </div>
+                <div class="input-box">
+                    <span class="details-button">EFTERNAVN</span>
+                    <input type="text" placeholder=" Indtast dit efternavn" required>
+                </div>
+                <div class="input-box">
+                    <span class="details-button">E-MAIL</span>
+                    <input type="email" placeholder=" Indtast din e-mail" required>
+                </div>
+                <div class="input-box">
+                    <span class="details-button">PASSWORD</span>
+                    <input type="password" placeholder=" Indtast password" required>
+                </div>
+                <div class="input-box">
+                    <script type="text/javascript">
+                        var password = document.getElementById("password")
+                            , confirm_password = document.getElementById("confirm_password");
+
+                        function validatePassword(){
+                            if(password.value != confirm_password.value) {
+                                confirm_password.setCustomValidity("Passwords Don't Match");
+                            } else {
+                                confirm_password.setCustomValidity('');
+                            }
+                        }
+
+                        password.onchange = validatePassword;
+                        confirm_password.onkeyup = validatePassword;</script>
+
+                    <span class="details-button">GENTAG PASSWORD</span>
+                    <input type="password" placeholder=" Gentag password" id="confirm_password" required>
+                </div>
+                <div class="button"><a href="/confirmation"></a>
+                    <input type="submit" value="Tilmeld"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
