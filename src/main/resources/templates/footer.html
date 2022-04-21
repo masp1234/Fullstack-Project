@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full-stack projekt - Footer</title>
+    <link rel="stylesheet" href="../static/footerStyle.css" th:href="@{footerStyle.css}">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
     <link rel='stylesheet' href='../static/styles/footerStyle.css' th:href="@{/styles/footerStyle.css}">
     <style>
@@ -12,8 +13,8 @@
     </style>
 </head>
 <body>
-
-<footer th:fragment="footer" class="footer">
+<div th:fragment="footer">
+<footer class="footer">
     <div class="container">
         <div class="row">
             <div class="footer-col">
@@ -54,5 +55,6 @@
         </div>
     </div>
 </footer>
+</div>
 </body>
 </html>
