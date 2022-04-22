@@ -58,7 +58,31 @@ public class UserRepository {
             System.out.println("kunne ikke finde bruger");
             e.printStackTrace();
         }
-        System.out.println(selectedUser);
+
+        return selectedUser;
+    }
+
+    public User selectUserByEmail(String email) {
+        String query = "SELECT * FROM user WHERE user_email = '" + email + "'";
+        User selectedUser = null;
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                int userId = resultSet.getInt(1);
+                String userEmail = resultSet.getString(2);
+                String userPassword = resultSet.getString(3);
+                String userFirstname = resultSet.getString(4);
+                String userLastname = resultSet.getString(5);
+                selectedUser = new User(userId, userEmail, userFirstname, userLastname, userPassword);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("kunne ikke finde bruger");
+            e.printStackTrace();
+        }
 
         return selectedUser;
     }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-
+    private User currentUser = null;
     private UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -16,5 +16,17 @@ public class UserService {
 
     public void createUser(User user) {
         userRepository.createUser(user);
+    }
+
+    public boolean login(String email, String password) {
+        User user = userRepository.selectUserByEmail(email);
+        if(user == null){
+            return false;
+        }else if(user.getPassword().equals(password)){
+            currentUser = user;
+            return true;
+        }else{
+            return false;
+        }
     }
 }

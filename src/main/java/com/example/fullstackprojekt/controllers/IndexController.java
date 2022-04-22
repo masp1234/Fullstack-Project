@@ -9,8 +9,6 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(){
-        UserRepository userRepository = new UserRepository();
-        userRepository.selectUserById(1);
         return "index.html";
     }
 

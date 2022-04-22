@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -18,10 +19,24 @@ public class UserController {
 
 
     @PostMapping(value ="/sign-up")
-    public String createUser(@ModelAttribute User user) {
+    public String createUser(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
+    @RequestParam("email") String email, @RequestParam("password") String password) {
         //Opretter user
-        userService.createUser(user);
+        userService.createUser(new User(email,firstName,lastName,password));
 
-        return "redirect:/bruger-forside";
+        return "redirect:/";
     }
+
+
+    @PostMapping("/login-attempt")
+    public String login(@RequestParam("email") String email, @RequestParam("password") String password){
+        boolean logInSuccessful = userService.login(email,password);
+        if(logInSuccessful){
+            return "redirect:/bruger-forside";
+        } else{
+            return "redirect:/";
+        }
+
+    }
+
 }
