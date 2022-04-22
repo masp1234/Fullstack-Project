@@ -16,10 +16,6 @@ public class WishList {
     private List<Wish> wishes;
 
 
-    public WishList() {
-
-    }
-
     public WishList(int id, String name, String description, List<Wish> wishes) {
         this.id = id;
         this.name = name;
