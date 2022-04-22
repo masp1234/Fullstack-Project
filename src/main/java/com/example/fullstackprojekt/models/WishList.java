@@ -10,16 +10,20 @@ import java.util.List;
 @Setter
 @ToString
 public class WishList {
-    int id;
-    String name;
-    String description;
-    List<Wish> wishList;
+    private int id;
+    private String name;
+    private String description;
+    private List<Wish> wishes;
 
 
-    public WishList(int id, String name, String description, List<Wish> wishList) {
+    public WishList() {
+
+    }
+
+    public WishList(int id, String name, String description, List<Wish> wishes) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.wishList = wishList;
+        this.wishes = wishes;
     }
 }
