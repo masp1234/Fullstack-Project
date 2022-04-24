@@ -2,7 +2,9 @@ package com.example.fullstackprojekt.controllers;
 
 import com.example.fullstackprojekt.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class IndexController {
@@ -21,10 +23,7 @@ public class IndexController {
     public String signUp(){
         return "signUp.html";
     }
-    @GetMapping("/bruger-forside")
-    public String brugerForside(){
-        return "bruger-forside";
-    }
+
     @GetMapping("/footer")
     public String footer() {
         return "footer";

@@ -19,6 +19,12 @@ public class WishController {
         this.wishService = wishService;
     }
 
+    @GetMapping("/bruger-forside/{id}")
+    public String brugerForside(@PathVariable("id") int id, Model model){
+        model.addAttribute("findUserById", wishRepository.findListById(id));
+        return "bruger-forside";
+    }
+
 
     @GetMapping("/add")
     public String showAddWish(){
@@ -30,9 +36,8 @@ public class WishController {
     public String addWish(@RequestParam("name") String name,
                           @RequestParam("description") String description,
                           @RequestParam("price") int price,
-                          @RequestParam("link") String link,
-                          @RequestParam("isReserved") boolean isReserved){
-        wishService.addWish(new Wish(name, description, price, link, isReserved));
+                          @RequestParam("link") String link){
+        wishService.addWish(new Wish(name, description, price, link));
         return "redirect:/bruger-forside";
     }
 
@@ -47,9 +52,8 @@ public class WishController {
     public String updateWish(@RequestParam("name") String name,
                           @RequestParam("description") String description,
                           @RequestParam("price") int price,
-                          @RequestParam("link") String link,
-                          @RequestParam("isReserved") boolean isReserved){
-        wishService.updateByid(new Wish(name, description, price, link, isReserved));
+                          @RequestParam("link") String link){
+        wishService.updateByid(new Wish(name, description, price, link));
         return "redirect:/bruger-forside";
     }
 
