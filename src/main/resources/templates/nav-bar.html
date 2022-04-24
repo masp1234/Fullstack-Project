@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="../static/styles/navBar.css" th:href="@{/styles/navBar.css}">
     </th:block>
 </head>
-<body>
+<body th:fragment="navbar">
+<div class="navbar">
     <div class="left-navbar">
         <div class="logoContainer">
             <img class="logo" th:src="@{/images/logo.png}" src="../static/images/logo.png">
@@ -24,7 +25,7 @@
 
     <div class="right-navbar">
         <ul class="ul-navbar">
-            <li><p>DANIEL KOLTZE JØRGENSEN</p></li>
+            <li><p><!--th:text="${user.firstName}"-->DANIEL KOLTZE JØRGENSEN</p></li>
             <li><a href="#">Kontakt</a></li>
             <li><a href="/signUp">Profil</a></li>
             <li><a href="/login">Log ud</a></li>

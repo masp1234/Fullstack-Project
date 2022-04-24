@@ -29,4 +29,8 @@ public class UserService {
             return false;
         }
     }
+
+    public User sendUser() {
+        return currentUser;
+    }
 }

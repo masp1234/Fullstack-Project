@@ -3,6 +3,7 @@ package com.example.fullstackprojekt.controllers;
 import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +30,15 @@ public class UserController {
 
 
     @PostMapping("/login-attempt")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password){
+    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model){
         boolean logInSuccessful = userService.login(email,password);
         if(logInSuccessful){
+            //User user = userService.sendUser();
+            //model.addAttribute("user", user);
             return "redirect:/bruger-forside";
         } else{
-            return "redirect:/";
+            model.addAttribute("loginFailed","loginFailed");
+            return "login";
         }
 
     }
