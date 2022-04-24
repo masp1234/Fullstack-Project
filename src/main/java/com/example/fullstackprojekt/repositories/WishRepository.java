@@ -16,6 +16,7 @@ public class WishRepository {
     public WishRepository() {
         connection = ConnectionManager.connectToMySQL();
     }
+
     public List<Wish> getAll(){
 
         List<Wish> whisList =  new ArrayList<>();
@@ -60,10 +61,10 @@ public class WishRepository {
     }
 
     public Wish findWishById(int id){
-        final String findWish_query="SELECT * FROM wish  WHERE id=?";
+        final String FIND_QUERY="SELECT * FROM wish  WHERE id=?";
         Wish wish=null;
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(findWish_query);
+            PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
             preparedStatement.setInt(1,id);
             ResultSet resultSet= preparedStatement.executeQuery();
             resultSet.next();
