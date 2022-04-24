@@ -34,6 +34,7 @@
                     <input type="password" name="password"
                            id="password" placeholder=" Indtast kodeord" required>
                 </div>
+                <p th:if="${loginFailed != null}" style="color: red;">Brugernavn eller kodeord er forkert</p>
                 <button type="submit">LOG IND</button>
                <div> <link><a href="#">Glemt kodeord?</a></link></div>
 
