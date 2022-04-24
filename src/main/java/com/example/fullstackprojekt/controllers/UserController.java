@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
     private UserService userService;
@@ -33,8 +35,6 @@ public class UserController {
     public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model){
         boolean logInSuccessful = userService.login(email,password);
         if(logInSuccessful){
-            //User user = userService.sendUser();
-            //model.addAttribute("user", user);
             return "redirect:/bruger-forside";
         } else{
             model.addAttribute("loginFailed","loginFailed");
