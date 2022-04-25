@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+label{
+    font-family: 'Raleway', sans-serif;
+}
+
+
+button{
+    font-family: 'Merriweather', serif;
+}
+
+.page-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: #FFD898; 
+}
+
+
+.form-border { 
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    color: black;
+    font-weight: 500;
+    max-width: 400px;
+    width: 100%;
+    max-height: 400px;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 30px;
+
+      
+}
+input{
+    display: block;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.form-container input{
+    width: 320px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.name, .description{
+    padding: 10px,0px;
+    margin-bottom: 20px;
+    
+}
+#logo{
+    width: 50px;
+}
+.logo{
+    display: flex;
+    margin-bottom: 35px;
+    justify-content: center;
+}
+.logoText h1{
+    font-size: 25px;
+    margin-top: .5rem;
+}
+.logoText h1 span {
+    font-weight: 900;
+
+}
+.form-container label{
+    margin-bottom: 5px;
+}
