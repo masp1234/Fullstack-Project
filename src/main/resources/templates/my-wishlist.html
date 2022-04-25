@@ -15,6 +15,13 @@
     <!--Overskrift med listenavn -->
     <!--Slet ønske -->
 
+    <form class="form-container" action="/add-wishlist" method="POST">
+
+        <label for="wishlistName">Ønskelistens navn</label>
+        <input id="wishlistName" type="text" name="wishlistName">
+        <button type="submit">Submit</button>
+    </form>
+
     <h1 class="title">Navn på ønskeliste her</h1>
 
     <div class="table-responsive">
@@ -39,7 +46,7 @@
                 <td th:text="${wish.price}" class="body-text">300</td>
                 <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
                 <td>
-                    <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Delete</a>
+                    <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>
                 </td>
                 
 
@@ -65,7 +72,7 @@
 
 
                     <td>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Opret</button>
                     </td>
                 </form>
             </tr>
