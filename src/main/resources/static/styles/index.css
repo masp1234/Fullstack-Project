@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
-
+@import url('loginStyle.css');
 
 h1{
     font-family: 'Raleway', sans-serif;
@@ -46,8 +46,8 @@ margin: 20px 0;
     display: flex;
     justify-content: space-around;
     margin-top: 150px;
-   
-    
+
+
 }
 .secondContainer1, .secondContainer2, .secondContainer3 {
     display: flex;
@@ -114,7 +114,7 @@ margin: 20px 0;
     margin-right: 30px;
 }
 .ul-navbar li a{
-    
+
     display: block;
     padding: 0 25px;
     font-size: 27px;
@@ -133,12 +133,12 @@ margin: 20px 0;
 
 
 .ul-navbar{
-    
+
     display: flex;
     justify-content: space-between;
     list-style-type: none;
     align-items: center;
-    
+
 
 }
 
@@ -176,8 +176,8 @@ margin: 20px 0;
     margin-top: 150px;
     margin-bottom: 150px;
     display: flex;
-    
-    
+
+
 }
 .downloadText p{
     font-size: 22px;
@@ -204,3 +204,11 @@ button a{
     text-decoration: none;
     color: black
 }
+
+/*
+.login-btn {
+    padding: 0;
+    border: none;
+    background: none;
+}
+ */
