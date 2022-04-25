@@ -51,6 +51,27 @@ public class WishListRepository {
         return wishList;
     }
 
+    public List<WishList> createWishList(WishList wishList){
+        List<WishList> newWishList= new ArrayList<>();
+        final String QUERY="INSERT INTO wishlist ( wishlist_name, wishlist_description, wishlist_user_id, wishlist_owner_id) VALUES(?, ? , ? , ?)";
+        try {
+            PreparedStatement preparedStatement= connection.prepareStatement(QUERY);
+            preparedStatement.setString(1,wishList.getName());
+            preparedStatement.setString(2,wishList.getDescription());
+            preparedStatement.setInt(3,wishList.getUserId());
+            preparedStatement.setInt(4,wishList.getUserId());
+            preparedStatement.executeUpdate();
+            newWishList.add(new WishList(wishList.getName(), wishList.getDescription(), wishList.getUserId()));
+            preparedStatement.close();
+            System.out.println("created");
+        }
+        catch (SQLException e){
+            System.out.println(e + " not created");
+            e.printStackTrace();
+        }
+     return newWishList;
+    }
+
     public WishList findWishListById(int id){
         final String FIND_QUERY="SELECT * FROM wishlist  WHERE wishlist_id=?";
         WishList wishList=null;

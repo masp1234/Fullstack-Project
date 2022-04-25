@@ -28,4 +28,9 @@ public class IndexController {
     public String footer() {
         return "footer";
     }
+
+    @GetMapping("/create-wishlist")
+    public String createlist(){
+        return "create-wishlist";
+    }
 }

@@ -32,4 +32,10 @@ public class WishList {
         this.userId = userId;
         this.ownerId = ownerId;
     }
+
+    public WishList(String name, String description, int userId) {
+        this.name= name;
+        this.description= description;
+        this.userId= userId;
+    }
 }

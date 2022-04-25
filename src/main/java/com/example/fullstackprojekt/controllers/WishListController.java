@@ -2,12 +2,15 @@ package com.example.fullstackprojekt.controllers;
 
 import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.models.Wish;
+import com.example.fullstackprojekt.models.WishList;
 import com.example.fullstackprojekt.models.WishStub;
 import com.example.fullstackprojekt.services.WishListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -24,7 +27,6 @@ public class WishListController {
     public String getWishlistById(@PathVariable("id") int id, Model model) {
         List<Wish> wishes = WishStub.getAllWishesByWishList();
         model.addAttribute("wishlist", wishes);
-
         return "my-wishlist";
 
     }
@@ -33,5 +35,14 @@ public class WishListController {
         User user = (User) session.getAttribute("user");
         model.addAttribute("wishLists", wishListService.getAllByUserId(user.getId()));
         return "bruger-forside";
+    }
+
+    @PostMapping("/add-wishlist")
+    public String opretList(@RequestParam("wishlistName") String name,
+                            @RequestParam("wishlistDescription") String description,
+                             HttpSession httpSession){
+         User user= (User) httpSession.getAttribute("user" );
+        wishListService.createWishList(new WishList(name,description, user.getId()));
+        return "redirect:/bruger-forside";
     }
 }

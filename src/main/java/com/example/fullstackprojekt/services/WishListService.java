@@ -21,4 +21,8 @@ public class WishListService {
         return wishListRepository.getAllByUserId(id);
 
     }
+
+    public void createWishList(WishList wishList) {
+        wishListRepository.createWishList(wishList);
+    }
 }
