@@ -17,7 +17,7 @@ public class WishListRepository {
 
     public List<WishList> findByUserId(int id) {
         List wishList = new ArrayList();
-        final String FIND_QUERY = "SELECT * FROM wish_list  WHERE user_id=?";
+        final String FIND_QUERY = "SELECT * FROM wishlist  WHERE user_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
             preparedStatement.setInt(1,id);
@@ -38,7 +38,7 @@ public class WishListRepository {
     }
 
     public WishList findWishListById(int id){
-        final String FIND_QUERY="SELECT * FROM wish_list  WHERE wish_list_id=?";
+        final String FIND_QUERY="SELECT * FROM wishlist  WHERE wishlist_id=?";
         WishList wishList=null;
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
@@ -60,7 +60,7 @@ public class WishListRepository {
 
     public void updateByid(WishList wishList) {
 
-        final String UPDATE_QUERY="UPDATE wish SET wish_list_name=?, wish_list_description=? WHERE wish_list_id=?";
+        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_user_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_QUERY);
             preparedStatement.setString(1,wishList.getName());
@@ -75,7 +75,7 @@ public class WishListRepository {
     }
 
     public void deleteById(int id){
-        final String DELETE_QUERY="DELETE FROM wishList WHERE wish_list_id=?";
+        final String DELETE_QUERY="DELETE FROM wishlist WHERE wishlist_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(DELETE_QUERY);
             preparedStatement.setInt(1,id);
