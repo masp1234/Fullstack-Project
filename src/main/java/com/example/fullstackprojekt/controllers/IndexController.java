@@ -6,12 +6,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class IndexController {
 
     @GetMapping("/")
-    public String index(){
-        return "index.html";
+    public String index(HttpSession session){
+        String templateUrl = "index";
+        if (session.getAttribute("user") != null) {
+
+            //uden redirect henter den ikke ønskelister
+            templateUrl = "redirect:/bruger-forside";
+        }
+
+        return templateUrl;
     }
 
     @GetMapping("/login")
