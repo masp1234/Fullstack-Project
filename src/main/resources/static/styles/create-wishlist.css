@@ -64,6 +64,7 @@ input{
 .logo{
     display: flex;
     margin-bottom: 35px;
+    justify-content: center;
 }
 .logoText h1{
     font-size: 25px;
