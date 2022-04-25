@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ØnskeBrønden</title>
+    <link rel="stylesheet" href="/src/main/resources/static/styles/loginStyle.css"
+          th:href="@{loginStyle.css}">
+</head>
+<body>
+<div class="page-container">
+
+
+    <section class="section-container">
+
+
+        <form class="form-container" action="/add-wishlist" method="POST">
+
+            <label for="wishlistName">Ønskelistens navn</label>
+            <input id="wishlistName" type="text" name="wishlistName">
+
+            <label for="wishlistDescription">Attack</label>
+            <input id="wishlistDescription" type="text" name="wishlistDescription">
+
+            <button type="submit">Submit</button>
+        </form>
+
+    </section>
+</div>
+
+</body>
+</html>
