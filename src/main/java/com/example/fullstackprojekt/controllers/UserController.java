@@ -4,8 +4,6 @@ import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,9 +30,11 @@ public class UserController {
 
 
     @PostMapping("/login-attempt")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model){
+    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session){
         boolean logInSuccessful = userService.login(email,password);
         if(logInSuccessful){
+            session.setAttribute("user", userService.getCurrentUser());
+
             return "redirect:/bruger-forside";
         } else{
             model.addAttribute("loginFailed","loginFailed");

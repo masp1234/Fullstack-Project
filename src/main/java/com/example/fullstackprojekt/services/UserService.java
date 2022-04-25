@@ -30,7 +30,7 @@ public class UserService {
         }
     }
 
-    public User sendUser() {
+    public User getCurrentUser() {
         return currentUser;
     }
 }

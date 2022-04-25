@@ -2,12 +2,10 @@ package com.example.fullstackprojekt.repositories;
 
 import com.example.fullstackprojekt.models.Wish;
 import com.example.fullstackprojekt.models.WishList;
+import com.example.fullstackprojekt.utilities.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +13,37 @@ import java.util.List;
 public class WishListRepository {
     Connection connection;
 
-    public List<WishList> findByUserId(int id) {
-        List wishList = new ArrayList();
-        final String FIND_QUERY = "SELECT * FROM wishlist  WHERE user_id=?";
+    public WishListRepository() {
+        connection = ConnectionManager.connectToMySQL();
+    }
+
+    public List<WishList> getAllByUserId(int id) {
+        List<WishList> wishList = new ArrayList();
+        final String QUERY = "SELECT * FROM wishlist  WHERE wishlist_user_id=" + id;
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(QUERY);
+
+
+            /*
+            PreparedStatement preparedStatement=connection.prepareStatement(QUERY);
             preparedStatement.setInt(1,id);
+
+
             ResultSet resultSet= preparedStatement.executeQuery();
+
+             */
+
             while (resultSet.next()) {
                 id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
-                wishList.add(new WishList(id,name,description));
+                int userId = resultSet.getInt(4);
+                int ownerId = resultSet.getInt(5);
+                wishList.add(new WishList(id, name, description, userId, ownerId));
                 System.out.println("is found");
             }
-            preparedStatement.close();
+            statement.close();
         }catch (SQLException e){
             System.out.println(e + "Not Found");
             e.printStackTrace();
@@ -48,7 +62,9 @@ public class WishListRepository {
             id=resultSet.getInt(1);
             String name= resultSet.getString(2);
             String description = resultSet.getString(3);
-            wishList= new WishList(id,name,description);
+            int userId = resultSet.getInt(4);
+            int ownerId = resultSet.getInt(5);
+            wishList= new WishList(id, name, description, userId, ownerId);
             System.out.println("is found");
 
         }catch (SQLException e){

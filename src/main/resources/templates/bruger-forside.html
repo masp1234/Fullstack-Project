@@ -15,6 +15,19 @@
 <body>
 
 <div th:insert ="nav-bar :: navbar"></div>
+
+
+<div>
+    <table>
+        <tr th:each="thing: ${wishLists}">
+        <td th:text="${thing.name}"></td>
+        <td th:text="${thing.description}"></td>
+        </tr>
+
+
+        
+    </table>
+</div>
 <!-----navbar----->
 <!--<div th:fragment="bruger-navbar" class="bruger-navbar">
     <div class="left-navbar">
