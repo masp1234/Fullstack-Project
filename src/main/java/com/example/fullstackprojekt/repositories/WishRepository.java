@@ -19,7 +19,7 @@ public class WishRepository {
 
     public List<Wish> getAll(){
 
-        List<Wish> whisList =  new ArrayList<>();
+        List<Wish> wishList =  new ArrayList<>();
         try{
             Statement statement= connection.createStatement();
             final String SQL_QUERY="SELECT * FROM whish";
@@ -30,14 +30,14 @@ public class WishRepository {
                 String description = resultSet.getString(3);
                 double price = resultSet.getDouble(4);
                 String link = resultSet.getString(5);
-                whisList.add(new Wish(id,name,description,price,link));
+                wishList.add(new Wish(id,name,description,price,link));
             }
             statement.close();
         }catch (SQLException e){
             System.out.println(e + "Not Found");
             e.printStackTrace();
         }
-        return whisList;
+        return wishList;
     }
 
     public void addWish(Wish wish){
@@ -57,27 +57,29 @@ public class WishRepository {
             e.printStackTrace();
         }
     }
-    public Wish findListById(int id){
+
+    public  List<Wish> findListById(int id){
+        List<Wish> wishList= new ArrayList<>();
         final String FIND_QUERY="SELECT * FROM wish  WHERE wish_list_id=?";
-        Wish wish=null;
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
             preparedStatement.setInt(1,id);
             ResultSet resultSet= preparedStatement.executeQuery();
-            resultSet.next();
-            id=resultSet.getInt(1);
-            String name= resultSet.getString(2);
-            String description = resultSet.getString(3);
-            double price = resultSet.getDouble(4);
-            String link = resultSet.getString(5);
-            wish= new Wish(id,name,description,price,link);
-            System.out.println("is found");
-
+            while (resultSet.next()) {
+                id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String description = resultSet.getString(3);
+                double price = resultSet.getDouble(4);
+                String link = resultSet.getString(5);
+                wishList.add(new Wish(id,name,description,price,link));
+                System.out.println("is found");
+            }
+            preparedStatement.close();
         }catch (SQLException e){
             System.out.println(e + "Not Found");
             e.printStackTrace();
         }
-        return wish;
+        return wishList;
     }
 
     public Wish findWishById(int id){
