@@ -14,45 +14,51 @@
 </head>
 <body>
 
-<div th:insert ="nav-bar :: navbar"></div>
+<!--<div th:insert ="nav-bar :: navbar"></div>-->
 
 
-<!-----navbar----->
-<!--<div th:fragment="bruger-navbar" class="bruger-navbar">
-    <div class="left-navbar">
-        <div class="logoContainer">
-            <h1>Ønske<span>Brønden</span></h1>
+<div class="navbar">
+    <a href="/bruger-forside" style="text-decoration: none;">
+        <div class="left-navbar" >
+            <div class="logoContainer">
+                <img class="logo" th:src="@{/images/logo.png}" src="../static/images/logo.png">
+            </div>
+            <div class="logoText">
+                <h1>Ønske<span>Brønden</span></h1>
+            </div>
         </div>
-    </div>
-
+    </a>
     <div class="right-navbar">
         <ul class="ul-navbar">
-            <li>Brugernavn</li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#" >Log ud</a></li>
+            <li><p th:text="${user.firstName} + ' ' + ${user.lastName}"></p></li>
+            <li><a href="/bruger-forside">Home</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a href="/logout">Log ud</a></li>
 
         </ul>
     </div>
-</div>-->
+</div>
+
+
+
+
+
 <!-----add-option----->
 <div class="add-option-container">
     <a href="/create-wishlist" class="add"> <button type="button" class="btn btn-warning"> ➕ Opret Ønskeseddel</button></a>
 </div>
 <div class="wishContainer">
-    <!--
-    <div class="card-div" th:each="thing: ${wishLists}">
-        <td th:text="${thing.name}">Føds</td>
-        <td th:text="${thing.description}">Min føds</td>
-    </div>
-    -->
 
+    <!-- cool men lidt messed up -->
 
-    <div class="card-div card-div-hover" onclick="location.href='/my-wishlist';" th:each="wishlist: ${wishLists}">
+ <a class="card-box-link" th:href="@{'/wishlist/' + ${wishlist.id}}" th:each="wishlist: ${wishLists}">
+    <div class="card-div card-div-hover">
         <section class="card-container">
             <h1 th:text="${wishlist.name}">60 års fødselsdag</h1>
             <p th:text="${wishlist.description}">01.01.2023 inviterer vi hele familien til fødselsdag</p>
         </section>
     </div>
+ </a>
 
 <div class="card-div">
     <section class="card-container">
@@ -60,7 +66,7 @@
         <p>Opret Ønskeseddel</p>
     </section>
 </div>
-    //
+
 
 </div>
 <div th:replace="footer :: footer"></div>

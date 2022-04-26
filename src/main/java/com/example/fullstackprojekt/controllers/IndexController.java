@@ -54,4 +54,6 @@ public class IndexController {
     public String wishlist(){
         return "my-wishlist";
     }
+
+
 }

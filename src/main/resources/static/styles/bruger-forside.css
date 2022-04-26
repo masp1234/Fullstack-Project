@@ -8,6 +8,15 @@ h1{
 p{
     font-family: 'Merriweather', serif;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.card-box-link {
+    text-decoration: none;
+    color: black;
+}
 /*-----------navbar--------*/
 /*
 .bruger-navbar{
