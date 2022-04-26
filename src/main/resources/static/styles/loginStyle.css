@@ -41,7 +41,6 @@ body {
     text-align: center;
     font-family: 'Raleway', sans-serif;
     color: #FFD898;
-
 }
 
 .container .title::before { /*TILMELDING*/
@@ -116,7 +115,6 @@ button:hover {
 button:active {
     position: relative;
     top: 2px;
-
 }
 
 /*Glemt kodeord*/
@@ -133,24 +131,3 @@ a{
 a:hover {
     color: #ffbb4c;
 }
-
-/*
-.modal {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: #FFD898;
-
-}
-
-.modal-content {
-    background: #f4f4f4;
-    margin: 10% auto;
-    width: 60%;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
-}
-*/

@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/src/main/resources/static/loginStyle.css"
           th:href="@{/styles/loginStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -35,9 +34,8 @@
                            id="password" placeholder=" Indtast kodeord" required>
                 </div>
                 <p th:if="${loginFailed != null}" style="color: red;">Brugernavn eller kodeord er forkert</p>
-                <button type="submit">LOG IND</button>
+                <button class="loginButton" type="submit">LOG IND</button>
                <div> <link><a href="#">Glemt kodeord?</a></link></div>
-
             </div>
 
         </form>
