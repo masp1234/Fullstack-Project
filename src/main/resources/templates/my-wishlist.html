@@ -53,6 +53,7 @@
                 <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
                 <td>
                     <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>
+                    <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
                 </td>
                 
 

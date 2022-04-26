@@ -27,4 +27,9 @@ public class WishService {
         return wishRepository.findListById(id);
 
     }
+
+    public Wish selectWishById(int id) {
+        return wishRepository.selectWishById(id);
+
+    }
 }

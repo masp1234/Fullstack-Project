@@ -18,31 +18,32 @@ public class WishRepository {
     }
 
 
-    public void addWish(Wish wish){
+    public void addWish(Wish wish) {
 
-        final String ADD_QUERY="INSERT INTO wish(wish_name, wish_description, wish_price, wish_link) VALUE(?,?,?,?,)";
+        final String ADD_QUERY = "INSERT INTO wish(wish_name, wish_description, wish_price, wish_link, wishlist_id) VALUE(?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(ADD_QUERY);
-            preparedStatement.setString(1,wish.getName());
-            preparedStatement.setString(2,wish.getDescription());
-            preparedStatement.setDouble(3,wish.getPrice());
-            preparedStatement.setString(4,wish.getLink());
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_QUERY);
+            preparedStatement.setString(1, wish.getName());
+            preparedStatement.setString(2, wish.getDescription());
+            preparedStatement.setDouble(3, wish.getPrice());
+            preparedStatement.setString(4, wish.getLink());
+            preparedStatement.setInt(5, wish.getWishlistId());
             preparedStatement.executeUpdate();
             System.out.println("is added");
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e + "Could not add");
             e.printStackTrace();
         }
     }
 
-    public  List<Wish> findListById(int id){
-        List<Wish> wishList= new ArrayList<>();
-        final String FIND_QUERY="SELECT * FROM wish  WHERE wishlist_id=?";
+    public List<Wish> findListById(int id) {
+        List<Wish> wishList = new ArrayList<>();
+        final String FIND_QUERY = "SELECT * FROM wish  WHERE wishlist_id=?";
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_QUERY);
             preparedStatement.setInt(1, id);
-            ResultSet resultSet= preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int wishId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
@@ -60,30 +61,34 @@ public class WishRepository {
                 System.out.println("is found");
             }
             preparedStatement.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e + "Not Found");
             e.printStackTrace();
         }
         return wishList;
     }
 
-    public Wish findWishById(int id){
-        final String FIND_QUERY="SELECT * FROM wish  WHERE id=?";
-        Wish wish=null;
+    public Wish selectWishById(int id) {
+        final String FIND_QUERY = "SELECT * FROM wish  WHERE wish_id = " + id;
+
+        Wish wish = null;
+
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
-            preparedStatement.setInt(1,id);
-            ResultSet resultSet= preparedStatement.executeQuery();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(FIND_QUERY);
             resultSet.next();
-            id=resultSet.getInt(1);
-            String name= resultSet.getString(2);
+
+            String name = resultSet.getString(2);
             String description = resultSet.getString(3);
             double price = resultSet.getDouble(4);
             String link = resultSet.getString(5);
-            wish= new Wish(id,name,description,price,link);
-            System.out.println("is found");
+            wish = new Wish(id, name, description, price, link);
 
-        }catch (SQLException e){
+
+
+            System.out.println("found a wish");
+
+        } catch (SQLException e) {
             System.out.println(e + "Not Found");
             e.printStackTrace();
         }
@@ -92,31 +97,31 @@ public class WishRepository {
 
     public void updateByid(Wish wish) {
 
-        final String UPDATE_QUERY="UPDATE wish SET wish_name=?, wish_description=?, wish_price=?, wish_link=? WHERE wish_id=?";
+        final String UPDATE_QUERY = "UPDATE wish SET wish_name=?, wish_description=?, wish_price=?, wish_link=? WHERE wish_id=?";
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_QUERY);
-            preparedStatement.setString(1,wish.getName());
-            preparedStatement.setString(2,wish.getDescription());
-            preparedStatement.setDouble(3,wish.getPrice());
-            preparedStatement.setString(4,wish.getLink());
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY);
+            preparedStatement.setString(1, wish.getName());
+            preparedStatement.setString(2, wish.getDescription());
+            preparedStatement.setDouble(3, wish.getPrice());
+            preparedStatement.setString(4, wish.getLink());
             preparedStatement.setInt(5, wish.getId());
             preparedStatement.executeUpdate();
             System.out.println("is update");
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Could not update");
             e.printStackTrace();
         }
     }
 
-    public void deleteById(int id){
-        final String DELETE_QUERY="DELETE FROM wish WHERE wish_id=?";
+    public void deleteById(int id) {
+        final String DELETE_QUERY = "DELETE FROM wish WHERE wish_id=?";
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement(DELETE_QUERY);
-            preparedStatement.setInt(1,id);
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             System.out.println("Is deleted");
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("is not deleted");
             e.printStackTrace();
         }

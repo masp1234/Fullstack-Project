@@ -1,7 +1,6 @@
 package com.example.fullstackprojekt.controllers;
 
 import com.example.fullstackprojekt.models.Wish;
-import com.example.fullstackprojekt.models.WishStub;
 import com.example.fullstackprojekt.repositories.WishRepository;
 import com.example.fullstackprojekt.services.WishService;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 import java.util.List;
 
 @Controller
@@ -37,42 +35,50 @@ public class WishController {
         return "my-wishlist";
     }
 
-
-    @GetMapping("/add")
-    public String showAddWish(){
-        return "add";
-    }
-
-
-    @PostMapping( value = "add")
+    @PostMapping("/add-wish")
     public String addWish(@RequestParam("name") String name,
                           @RequestParam("description") String description,
                           @RequestParam("price") int price,
-                          @RequestParam("link") String link){
-        wishService.addWish(new Wish(name, description, price, link));
-        return "redirect:/bruger-forside";
-    }
+                          @RequestParam("link") String link,
+                          HttpSession session){
 
-    @GetMapping("update/{id}")
-    public String showupdateside(@PathVariable("id") int id, Model model){
-        model.addAttribute("findWishById", wishRepository.findWishById(id));
-        return "update";
-    }
+        // Tager wishlistId fra session, som er blevet oprettet når man klikker på en wishlist
+        int wishListId = (int) session.getAttribute("wishlistSavedId");
 
+        wishService.addWish(new Wish(name, description, price, link, wishListId));
 
-    @PostMapping( value = "update")
-    public String updateWish(@RequestParam("name") String name,
-                          @RequestParam("description") String description,
-                          @RequestParam("price") int price,
-                          @RequestParam("link") String link){
-        wishService.updateByid(new Wish(name, description, price, link));
-        return "redirect:/bruger-forside";
+        // Tager id fra session og tilføjer til URL
+        return "redirect:/wishlist/" + session.getAttribute("wishlistSavedId");
     }
 
 
-    @GetMapping("delete/{id}")
+
+    @PostMapping("/update-wish")
+    public String updateWish(@RequestParam("id") int id,
+                             @RequestParam("name") String name,
+                             @RequestParam("description") String description,
+                             @RequestParam("price") int price,
+                             @RequestParam("link") String link,
+                             HttpSession session){
+
+        wishService.updateByid(new Wish(id, name, description, price, link));
+        return "redirect:/wishlist/" + session.getAttribute("wishlistSavedId");
+    }
+
+
+    @GetMapping("/delete/{id}")
     public String deleteWish(@PathVariable("id") int id, HttpSession session){
       wishService.deleteById(id);
         return "redirect:/wishlist/" + session.getAttribute("wishlistSavedId");
+    }
+
+    //TODO Spørg om hvorfor man ikke har pathen som "wishlist/11/wish/3" i stedet for en uafhængig side (ikke en underside)
+    @GetMapping("/wishlist/update-wish/{id}")
+    public String updateWishForm(@PathVariable("id") int id, Model model) {
+        Wish wish = wishService.selectWishById(id);
+
+        System.out.println(wish);
+        model.addAttribute("wish", wish);
+        return "update-wish";
     }
 }
