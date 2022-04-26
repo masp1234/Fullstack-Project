@@ -17,17 +17,6 @@
 <div th:insert ="nav-bar :: navbar"></div>
 
 
-<div>
-    <table>
-        <tr th:each="thing: ${wishLists}">
-        <td th:text="${thing.name}"></td>
-        <td th:text="${thing.description}"></td>
-        </tr>
-
-
-        
-    </table>
-</div>
 <!-----navbar----->
 <!--<div th:fragment="bruger-navbar" class="bruger-navbar">
     <div class="left-navbar">
@@ -50,12 +39,64 @@
     <a href="/create-wishlist" class="add"> <button type="button" class="btn btn-warning"> ➕ Opret Ønskeseddel</button></a>
     <a href="#" class="add"> <button type="button" class="btn btn-warning"> ➕ Opret Ønske</button></a>
 </div>
+<div class="wishContainer">
+    <!--
+    <div class="card-div" th:each="thing: ${wishLists}">
+        <td th:text="${thing.name}">Føds</td>
+        <td th:text="${thing.description}">Min føds</td>
+    </div>
+    -->
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+    <div class="card-div">
+        <section class="card-container">
+            <h1>60 års fødselsdag</h1>
+            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
+
 
 <div class="card-div">
     <section class="card-container">
         <a href="/create-wishlist" class="card-link"><button type="button" class="btn btn-outline-primary">+</button></a>
         <p>Opret Ønske</p>
     </section>
+</div>
+
 </div>
 <div th:replace="footer :: footer"></div>
 </body>
