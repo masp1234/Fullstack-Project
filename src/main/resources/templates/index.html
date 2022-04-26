@@ -27,7 +27,9 @@
     <div class="right-navbar">
         <ul class="ul-navbar">
             <li><a href="#">Kontakt</a></li>
-            <li><a href="/signUp">Tilmeld</a></li>
+            <button class="signUp-btn" onclick="signUpOpenForm()">
+                <li><a>Tilmeld</a></li>
+            </button>
 
             <button class="login-btn" onclick="openForm()">
                 <li><a> Log ind</a></li>
@@ -88,14 +90,19 @@
         document.getElementById("myForm").style.display = "block";
         document.getElementById("modal-bg").style.display="block";
     }
+
+    function signUpOpenForm() {
+        document.getElementById("signUpForm").style.display = "block";
+        document.getElementById("modal-bg").style.display="block";
+    }
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
         document.getElementById("modal-bg").style.display="none";
+        document.getElementById("signUpForm").style.display = "none";
     }
 
 </script>
 <div class="modal-bg" id="modal-bg"></div>
-
     <div class="form-popup" id="myForm">
         <form action="/login-attempt" method="POST" class="form-container">
             <div class="container">
@@ -126,5 +133,45 @@
             </div>
         </form>
     </div>
+
+<div class="signUp-modal-bg" id="signUp-modal-bg"></div>
+<div class="signUp-form-popup" id="signUpForm">
+    <form action="/sign-up" method="POST" class="form-container">
+        <div class="container">
+            <div class="loginContainer">
+                <button type="button" class="btn-cancel" onclick="closeForm()"></button>
+                <h1 class="title">TILMELD</h1>
+                <div class="user-details">
+                    <div class="input-box">
+                        <label for="firstName">FORNAVN</label>
+                        <input type="text" name="firstName" id="firstName" placeholder=" Indtast dit fornavn" required>
+                        <!--Kommer ikke videre hvis feltet ikke er indtastet-->
+                    </div>
+                    <div class="input-box">
+                        <label for="lastName">EMAIL</label>
+                        <input type="text" name="lastName" id="lastName" placeholder=" Indtast dit efternavn" required>
+                        <!--Kommer ikke videre hvis feltet ikke er indtastet-->
+                    </div>
+                    <div class="input-box">
+                        <label for="email">EMAIL</label>
+                        <input type="text" name="email" id="email" placeholder=" Indtast e-mail" required>
+                        <!--Kommer ikke videre hvis feltet ikke er indtastet-->
+                    </div>
+                    <div class="input-box">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" name="password"
+                               id="password" placeholder=" Indtast kodeord" required>
+                    </div>
+                    <p th:if="${loginFailed != null}" style="color: red;">Brugernavn eller kodeord er
+                        forkert</p>
+                    <button class="loginButton" type="submit">LOG IND</button>
+                    <div>
+                        <link>
+                        <a href="#">Glemt kodeord?</a></link></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
     <div th:replace="footer :: footer"></div>
 </body>
