@@ -1,5 +1,6 @@
 package com.example.fullstackprojekt.controllers;
 
+import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.models.Wish;
 import com.example.fullstackprojekt.repositories.WishRepository;
 import com.example.fullstackprojekt.services.WishService;
@@ -29,6 +30,8 @@ public class WishController {
     }
     @GetMapping("/wishlist/{id}")
     public String getAllWishesByWishListId(@PathVariable("id") int id, Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
         session.setAttribute("wishlistSavedId", id);
         List<Wish> wishes = wishService.getAllWishesByWishListId(id);
         model.addAttribute("wishlist", wishes);
