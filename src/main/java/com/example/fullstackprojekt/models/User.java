@@ -26,6 +26,7 @@ public class User {
         this.lastName = lastName;
         this.password = password;
     }
+    //Fejler med lombok så vi har manuelt lavet getters
 
     public String getPassword() {
         return password;

@@ -76,7 +76,7 @@ ul{
     background-color: #F5F5F5;
     place-items: center;
     display: grid;
-    width: 190px;
+    width: 300px;
     height: 300px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -85,9 +85,7 @@ ul{
     -moz-border-radius: 15px;
     margin-bottom: 30px;
 }
-.card-div.card-container :hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
+
 
 .card-div .card-container a .btn {
     border-radius: 100%;
@@ -97,15 +95,15 @@ ul{
     width: 60px;
     font-size: xx-large;
 }
-.card-div-hover:hover{
-    border: blue;
+.card-container:hover{
+     box-shadow: 0 10px 20px 0 rgba(255, 65, 65, 0.2);
 }
 
 .wishContainer{
     margin-left: 15%;
     margin-right: 15%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
     justify-content: center;
     

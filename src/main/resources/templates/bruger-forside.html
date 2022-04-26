@@ -37,7 +37,6 @@
 <!-----add-option----->
 <div class="add-option-container">
     <a href="/create-wishlist" class="add"> <button type="button" class="btn btn-warning"> ➕ Opret Ønskeseddel</button></a>
-    <a href="#" class="add"> <button type="button" class="btn btn-warning"> ➕ Opret Ønske</button></a>
 </div>
 <div class="wishContainer">
     <!--
@@ -46,54 +45,19 @@
         <td th:text="${thing.description}">Min føds</td>
     </div>
     -->
-    <div class="card-div card-div-hover" onclick="location.href='#';">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
-    <div class="card-div">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
-    <div class="card-div">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
-    <div class="card-div">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
-    <div class="card-div">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
-    <div class="card-div">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
-    <div class="card-div">
-        <section class="card-container">
-            <h1>60 års fødselsdag</h1>
-            <p>01.01.2023 inviterer vi hele familien til fødselsdag</p>
-        </section>
-    </div>
 
+
+    <div class="card-div card-div-hover" onclick="location.href='/my-wishlist';" th:each="wishlist: ${wishLists}">
+        <section class="card-container">
+            <h1 th:text="${wishlist.name}">60 års fødselsdag</h1>
+            <p th:text="${wishlist.description}">01.01.2023 inviterer vi hele familien til fødselsdag</p>
+        </section>
+    </div>
 
 <div class="card-div">
     <section class="card-container">
-        <a href="/create-wishlist" class="card-link"><button type="button" class="btn btn-outline-primary">+</button></a>
-        <p>Opret Ønske</p>
+        <a href="/create-wishlist" class="card-link"><button type="button" class="btn btn-outline-warning">+</button></a>
+        <p>Opret Ønskeseddel</p>
     </section>
 </div>
 

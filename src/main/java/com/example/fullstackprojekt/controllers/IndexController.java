@@ -26,7 +26,7 @@ public class IndexController {
     }
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate();
+        session.removeAttribute("user");
 
         return "redirect:/";
     }
@@ -49,5 +49,9 @@ public class IndexController {
     @GetMapping("/create-wishlist")
     public String createlist(){
         return "create-wishlist";
+    }
+    @GetMapping("/my-wishlist")
+    public String wishlist(){
+        return "my-wishlist";
     }
 }

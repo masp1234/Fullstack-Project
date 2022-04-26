@@ -6,9 +6,6 @@ import lombok.ToString;
 
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
 public class WishList {
     private int id;
     private String name;
@@ -37,5 +34,41 @@ public class WishList {
         this.name= name;
         this.description= description;
         this.userId= userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public List<Wish> getWishes() {
+        return wishes;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "WishList{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", userId=" + userId +
+                ", ownerId=" + ownerId +
+                ", wishes=" + wishes +
+                '}';
     }
 }
