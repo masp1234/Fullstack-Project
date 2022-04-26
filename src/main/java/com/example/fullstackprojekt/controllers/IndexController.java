@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+
+    //TODO Lav også en log-out, der redirecter til index og sletter session
     @GetMapping("/")
     public String index(HttpSession session){
         String templateUrl = "index";
