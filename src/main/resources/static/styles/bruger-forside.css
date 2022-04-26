@@ -97,21 +97,28 @@ ul{
     width: 60px;
     font-size: xx-large;
 }
+.card-div-hover:hover{
+    border: blue;
+}
 
 .wishContainer{
     margin-left: 15%;
     margin-right: 15%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
     
 
 }
 
 .card-div{
-    margin-left: 10px;
-    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    
+    
 }
+
 .card-container h1{
     font-size: 25px;
     text-align: center;
