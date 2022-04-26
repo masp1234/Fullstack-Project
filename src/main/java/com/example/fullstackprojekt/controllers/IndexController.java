@@ -24,6 +24,12 @@ public class IndexController {
 
         return templateUrl;
     }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+
+        return "redirect:/";
+    }
 
     @GetMapping("/login")
     public String login(){
