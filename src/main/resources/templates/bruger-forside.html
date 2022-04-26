@@ -14,7 +14,34 @@
 </head>
 <body>
 
-<div th:insert ="nav-bar :: navbar"></div>
+<!--<div th:insert ="nav-bar :: navbar"></div>-->
+
+
+<div class="navbar">
+    <a href="/bruger-forside" style="text-decoration: none;">
+        <div class="left-navbar" >
+            <div class="logoContainer">
+                <img class="logo" th:src="@{/images/logo.png}" src="../static/images/logo.png">
+            </div>
+            <div class="logoText">
+                <h1>Ønske<span>Brønden</span></h1>
+            </div>
+        </div>
+    </a>
+    <div class="right-navbar">
+        <ul class="ul-navbar">
+            <li><p th:text="${user.firstName} + ' ' + ${user.lastName}"></p></li>
+            <li><a href="/bruger-forside">Home</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a href="/logout">Log ud</a></li>
+
+        </ul>
+    </div>
+</div>
+
+
+
+
 
 <!-----add-option----->
 <div class="add-option-container">

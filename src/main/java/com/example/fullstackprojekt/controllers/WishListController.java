@@ -27,6 +27,7 @@ public class WishListController {
     @GetMapping("/bruger-forside")
     public String brugerForside(HttpSession session, Model model){
         User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
         model.addAttribute("wishLists", wishListService.getAllByUserId(user.getId()));
         return "bruger-forside";
     }
