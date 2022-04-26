@@ -23,12 +23,12 @@
 <div class="wishContainer">
 
     <!-- cool men lidt messed up -->
+
  <a class="card-box-link" th:href="@{'/wishlist/' + ${wishlist.id}}" th:each="wishlist: ${wishLists}">
     <div class="card-div card-div-hover">
-        <section class="card-container" >
+        <section class="card-container">
             <h1 th:text="${wishlist.name}">60 års fødselsdag</h1>
             <p th:text="${wishlist.description}">01.01.2023 inviterer vi hele familien til fødselsdag</p>
-            <a href="/">KIL HER </a>
         </section>
     </div>
  </a>

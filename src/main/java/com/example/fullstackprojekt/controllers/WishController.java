@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.util.List;
 
 @Controller
@@ -28,7 +30,8 @@ public class WishController {
         return "bruger-forside";
     }
     @GetMapping("/wishlist/{id}")
-    public String getAllWishesByWishListId(@PathVariable("id") int id, Model model) {
+    public String getAllWishesByWishListId(@PathVariable("id") int id, Model model, HttpSession session) {
+        session.setAttribute("wishlistSavedId", id);
         List<Wish> wishes = wishService.getAllWishesByWishListId(id);
         model.addAttribute("wishlist", wishes);
         return "my-wishlist";
@@ -68,8 +71,8 @@ public class WishController {
 
 
     @GetMapping("delete/{id}")
-    public String deleteWish(@PathVariable("id") int id){
+    public String deleteWish(@PathVariable("id") int id, HttpSession session){
       wishService.deleteById(id);
-        return "redirect:/bruger-forside";
+        return "redirect:/wishlist/" + session.getAttribute("wishlistSavedId");
     }
 }
