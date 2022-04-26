@@ -60,7 +60,7 @@ public class WishController {
     public String updateWish(@RequestParam("id") int id,
                              @RequestParam("name") String name,
                              @RequestParam("description") String description,
-                             @RequestParam("price") int price,
+                             @RequestParam("price") double price,
                              @RequestParam("link") String link,
                              HttpSession session){
 
