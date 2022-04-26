@@ -1,6 +1,7 @@
 package com.example.fullstackprojekt.controllers;
 
 import com.example.fullstackprojekt.models.Wish;
+import com.example.fullstackprojekt.models.WishStub;
 import com.example.fullstackprojekt.repositories.WishRepository;
 import com.example.fullstackprojekt.services.WishService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class WishController {
@@ -23,6 +26,12 @@ public class WishController {
     public String brugerForside(@PathVariable("id") int id, Model model){
         model.addAttribute("findUserById", wishRepository.findListById(id));
         return "bruger-forside";
+    }
+    @GetMapping("/wishlist/{id}")
+    public String getAllWishesByWishListId(@PathVariable("id") int id, Model model) {
+        List<Wish> wishes = wishService.getAllWishesByWishListId(id);
+        model.addAttribute("wishlist", wishes);
+        return "my-wishlist";
     }
 
 

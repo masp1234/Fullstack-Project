@@ -23,13 +23,7 @@ public class WishListController {
     public WishListController(WishListService wishListService) {
         this.wishListService = wishListService;
     }
-    @GetMapping("/wishlist/{id}")
-    public String getWishlistById(@PathVariable("id") int id, Model model) {
-        List<Wish> wishes = WishStub.getAllWishesByWishList();
-        model.addAttribute("wishlist", wishes);
-        return "my-wishlist";
 
-    }
     @GetMapping("/bruger-forside")
     public String brugerForside(HttpSession session, Model model){
         User user = (User) session.getAttribute("user");

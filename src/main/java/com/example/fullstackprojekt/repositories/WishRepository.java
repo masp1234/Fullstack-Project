@@ -17,28 +17,6 @@ public class WishRepository {
         connection = ConnectionManager.connectToMySQL();
     }
 
-    public List<Wish> getAll(){
-
-        List<Wish> wishList =  new ArrayList<>();
-        try{
-            Statement statement= connection.createStatement();
-            final String SQL_QUERY="SELECT * FROM whish";
-            ResultSet resultSet=statement.executeQuery(SQL_QUERY);
-            while (resultSet.next()){
-                int id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String description = resultSet.getString(3);
-                double price = resultSet.getDouble(4);
-                String link = resultSet.getString(5);
-                wishList.add(new Wish(id,name,description,price,link));
-            }
-            statement.close();
-        }catch (SQLException e){
-            System.out.println(e + "Not Found");
-            e.printStackTrace();
-        }
-        return wishList;
-    }
 
     public void addWish(Wish wish){
 
@@ -60,18 +38,25 @@ public class WishRepository {
 
     public  List<Wish> findListById(int id){
         List<Wish> wishList= new ArrayList<>();
-        final String FIND_QUERY="SELECT * FROM wish  WHERE wish_list_id=?";
+        final String FIND_QUERY="SELECT * FROM wish  WHERE wishlist_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet= preparedStatement.executeQuery();
             while (resultSet.next()) {
-                id = resultSet.getInt(1);
+                int wishId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
                 double price = resultSet.getDouble(4);
                 String link = resultSet.getString(5);
-                wishList.add(new Wish(id,name,description,price,link));
+                int isReservedResult = resultSet.getInt(7);
+
+                boolean isReserved = true;
+                if (isReservedResult == 0) {
+                    isReserved = false;
+                }
+
+                wishList.add(new Wish(wishId, name, description, price, link, id, isReserved));
                 System.out.println("is found");
             }
             preparedStatement.close();

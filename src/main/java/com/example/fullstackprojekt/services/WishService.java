@@ -4,9 +4,10 @@ import com.example.fullstackprojekt.models.Wish;
 import com.example.fullstackprojekt.repositories.WishRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WishService {
-    private Wish currentWish= null;
     private WishRepository wishRepository;
 
     public WishService(WishRepository wishRepository) {
@@ -22,4 +23,8 @@ public class WishService {
         wishRepository.deleteById(id);
     }
 
+    public List<Wish> getAllWishesByWishListId(int id) {
+        return wishRepository.findListById(id);
+
+    }
 }
