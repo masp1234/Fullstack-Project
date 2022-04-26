@@ -64,8 +64,8 @@ ul{
 
     width: 70%;
     height: 60px;
-    margin-left: 10% ;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -105,8 +105,8 @@ ul{
     margin-left: 15%;
     margin-right: 15%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
     justify-content: center;
     
 
