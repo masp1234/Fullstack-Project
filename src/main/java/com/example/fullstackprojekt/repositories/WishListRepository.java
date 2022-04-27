@@ -127,8 +127,13 @@ public class WishListRepository {
     }
 
 
+    public List<WishList> getAllSharedLists(int userId) {
+
+        List<WishList> list = new ArrayList<>();
 
 
+        return list;
 
+    }
 }
 

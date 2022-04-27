@@ -28,6 +28,14 @@ public class UserController {
         return "redirect:/";
     }
 
+    @PostMapping("/share-wishlist")
+    public String shareWishlist(@RequestParam("email") String email, HttpSession session){
+        // Vi har allerede gemt id som session, når man klikker ind på wishlist
+        int wishlistId = (int) session.getAttribute("wishlistSavedId");
+        userService.shareWishlist(email,wishlistId);
+        return "redirect:/wishlist/" + wishlistId;
+    }
+
 
     @PostMapping("/login-attempt")
     public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session){

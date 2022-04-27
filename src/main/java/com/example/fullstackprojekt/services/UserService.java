@@ -33,4 +33,9 @@ public class UserService {
     public User getCurrentUser() {
         return currentUser;
     }
+
+    public void shareWishlist(String email, int wishlistId) {
+        User user = userRepository.selectUserByEmail(email);
+        userRepository.shareWishlistWithUser(user.getId(), wishlistId);
+    }
 }

@@ -86,4 +86,19 @@ public class UserRepository {
 
         return selectedUser;
     }
+
+    public void shareWishlistWithUser(int userId, int wishlistId) {
+        String query = "INSERT INTO wishlist_users (wishlist_users_wishlist_id, wishlist_users_user_id) VALUES (?,?)";
+        try{
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1,wishlistId);
+            ps.setInt(2,userId);
+            ps.executeUpdate();
+
+            System.out.println("Kunne dele med en anden user med id" + userId);
+        }catch (Exception e){
+            System.out.println("Kunne ikke dele med en anden user med id" + userId);
+        }
+
+    }
 }
