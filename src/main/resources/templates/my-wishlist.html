@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Full-stack Project - My Wishlist</title>
@@ -104,7 +104,8 @@
             <td th:text="${wish.price}" class="body-text">300</td>
             <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
             <td>
-                <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>
+               <!-- <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a> -->
+                <a class="btn btn-danger" onclick="openFormDelete()">Slet</a>
                 <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
             </td>
         </tr>
@@ -119,8 +120,13 @@
         document.getElementById("modal-bg").style.display = "block";
     }
 
+    function openFormDelete() {
+        document.getElementById("deleteForm").style.display = "block";
+        document.getElementById("modal-bg").style.display = "block";
+    }
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
+        document.getElementById("deleteForm").style.display = "none";
         document.getElementById("modal-bg").style.display = "none";
     }
 
@@ -138,7 +144,22 @@
                         <label for="email">Indtast deres email her</label>
                         <input type="text" name="email" id="email" placeholder=" Indtast e-mail" required>
                     </div>
-                    <button type="submit">Invitér</button>
+                    <button class="invite-button" type="submit" th:href="@{'/delete/' + ${wish.id}}">Invitér</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="form-popup" id="deleteForm">
+    <form action="/delete/{id}" method="POST" class="form-container">
+        <div class="container">
+            <div class="loginContainer">
+                <button type="button" class="btn-cancel" onclick="closeForm()"></button>
+                <h1 class="title">Er du sikker på, at du vil slette dette element?</h1>
+                <div class="user-details">
+                    <button type="submit" class="delete-button">SLET ØNSKE</button>
                 </div>
             </div>
         </div>

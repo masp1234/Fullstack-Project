@@ -172,7 +172,7 @@ tbody {
     border-color: #3EB489;
 }
 
-.user-details button {
+.user-details .invite-button{
     height: 55px;
     width: 100%;
     max-width: 283px;
@@ -191,12 +191,41 @@ tbody {
     transform: translateX(-50%);
 }
 
-.user-details button:hover {
+.user-details .invite-button:hover {
     background: #ffbb4c;
     border: #ffbb4c;
 }
 
-.user-details button:active {
+.user-details .invite-button:active {
+    position: relative;
+    top: 2px;
+}
+
+.user-details .delete-button{
+    height: 55px;
+    width: 100%;
+    max-width: 283px;
+    border-radius: 30px;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 27px;
+    background: red;
+    color: #ffffff;
+    text-transform: uppercase;
+    box-shadow: 1px 2px #888888;
+    font-family: 'Raleway', sans-serif;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.user-details .delete-button:hover {
+    background: darkred;
+    border: #ffbb4c;
+}
+
+.user-details .delete-button:active {
     position: relative;
     top: 2px;
 }
@@ -262,4 +291,8 @@ tbody {
 .login-btn {
     all: unset;
     cursor: pointer;
+}
+
+.delete-button {
+    background-color: red;
 }
