@@ -114,6 +114,26 @@ ul{
     justify-content: space-between;
 }
 
+.navigate-to-wishes{
+    display: flex;
+    justify-content: start;
+    border-style: none;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.link-to-wishlist{
+    flex-grow: 10;
+    display: flex;
+    justify-content: start;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
 
 
 .card-div .card-container a .btn {
