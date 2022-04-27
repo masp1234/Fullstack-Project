@@ -55,7 +55,6 @@ public class WishController {
     }
 
 
-
     @PostMapping("/update-wish")
     public String updateWish(@RequestParam("id") int id,
                              @RequestParam("name") String name,

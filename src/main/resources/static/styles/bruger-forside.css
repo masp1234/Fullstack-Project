@@ -84,7 +84,9 @@ ul{
 .card-div .card-container{
     background-color: #F5F5F5;
     place-items: center;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 300px;
     height: 300px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -94,6 +96,44 @@ ul{
     -moz-border-radius: 15px;
     margin-bottom: 30px;
 }
+.link-container{
+    flex-grow: 1;
+    width: 100%;
+}
+
+.link-container a{
+    margin-top: 10px;
+}
+
+.div-container{
+    flex-grow: 10;
+}
+
+.link-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigate-to-wishes{
+    display: flex;
+    justify-content: start;
+    border-style: none;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.link-to-wishlist{
+    flex-grow: 10;
+    display: flex;
+    justify-content: start;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
 
 
 .card-div .card-container a .btn {
@@ -103,9 +143,10 @@ ul{
     height: 60px;
     width: 60px;
     font-size: xx-large;
+    margin-bottom: 50px;
 }
 .card-container:hover{
-     box-shadow: 0 10px 20px 0 rgba(255, 65, 65, 0.2);
+    box-shadow: 0 10px 20px 0 rgba(255, 65, 65, 0.2);
 }
 
 .wishContainer{
@@ -115,15 +156,15 @@ ul{
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
     justify-content: center;
-    
+
 
 }
 
 .card-div{
     display: flex;
     justify-content: center;
-    
-    
+
+
 }
 
 .card-container h1{
@@ -135,4 +176,33 @@ ul{
     font-size: 15px;
 }
 
+.card-container .btn-close{
+    height: 2px;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1px;
+    padding: 12px 5px;
+
+}
+.card-container .edit{
+    height: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor:pointer;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1px;
+    padding: 12px 5px;
+    float: left;
+}
 

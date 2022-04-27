@@ -1,9 +1,7 @@
 package com.example.fullstackprojekt.services;
 
-import com.example.fullstackprojekt.models.Wish;
 import com.example.fullstackprojekt.models.WishList;
 import com.example.fullstackprojekt.repositories.WishListRepository;
-import com.example.fullstackprojekt.repositories.WishRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,5 +22,17 @@ public class WishListService {
 
     public void createWishList(WishList wishList) {
         wishListRepository.createWishList(wishList);
+    }
+
+    public void deleteById(int id) {
+        wishListRepository.deleteById(id);
+    }
+
+    public WishList findListById(int id) {
+        return wishListRepository.findWishListById(id);
+    }
+
+    public void updateListById(WishList wishList) {
+        wishListRepository.updateByid(wishList);
     }
 }
