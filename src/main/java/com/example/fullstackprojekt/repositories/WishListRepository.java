@@ -74,7 +74,7 @@ public class WishListRepository {
     }
 
     public WishList findWishListById(int id){
-        final String FIND_QUERY="SELECT * FROM wishlist  WHERE wishlist_id=?";
+        final String FIND_QUERY="SELECT * FROM wishlist  WHERE wishlist_id=?" + id;
         WishList wishList=null;
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);

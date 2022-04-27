@@ -1,10 +1,13 @@
 package com.example.fullstackprojekt.controllers;
 import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.models.WishList;
+
+import com.example.fullstackprojekt.repositories.WishListRepository;
 import com.example.fullstackprojekt.services.WishListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpSession;
 public class WishListController {
 
     private WishListService wishListService;
+
+
 
     public WishListController(WishListService wishListService) {
         this.wishListService = wishListService;
@@ -33,6 +38,26 @@ public class WishListController {
                              HttpSession httpSession){
          User user = (User) httpSession.getAttribute("user");
         wishListService.createWishList(new WishList(name,description, user.getId()));
+        return "redirect:/bruger-forside";
+    }
+    @GetMapping("/updatelist/{id}")
+    public String findListById(@PathVariable ("id") int id, Model model){
+        WishList wishList= wishListService.findListById(id);
+        System.out.println(wishList);
+        model.addAttribute("findListById", wishList);
+        return "update-wishlist";
+    }
+
+    @PostMapping(value = "update-list")
+    public String updateList(@RequestParam("wishlistName") String name,
+                             @RequestParam("wishlistDescription") String description,
+                             HttpSession httpSession){
+        wishListService.updateListById(new WishList (name,description));
+        return "redirect:/bruger-forside";
+    }
+    @GetMapping("/deletelist/{id}")
+    public String deleteListWish(@PathVariable("id") int id){
+        wishListService.deleteById(id);
         return "redirect:/bruger-forside";
     }
 }

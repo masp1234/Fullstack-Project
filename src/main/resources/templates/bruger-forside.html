@@ -51,14 +51,19 @@
 
     <!-- cool men lidt messed up -->
 
- <a class="card-box-link" th:href="@{'/wishlist/' + ${wishlist.id}}" th:each="wishlist: ${wishLists}">
+ <div class="card-box-" th:href="@{'/wishlist/' + ${wishlist.id}}" th:each="wishlist: ${wishLists}">
     <div class="card-div card-div-hover">
-        <section class="card-container">
-            <h1 th:text="${wishlist.name}">60 års fødselsdag</h1>
+        <section class="card-container" >
+            <a th:href="@{'/updatelist/' + ${wishlist.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close">✏️</button></a>
+            <a  th:href="@{'/deletelist/' + ${wishlist.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close"></button></a>
+            <div class="div-container">
+            <h1 th:text="${wishlist.name}" class="card-head">60 års fødselsdag</h1>
             <p th:text="${wishlist.description}">01.01.2023 inviterer vi hele familien til fødselsdag</p>
+            </div>
         </section>
     </div>
- </a>
+ </div>
+
 
 <div class="card-div">
     <section class="card-container">
@@ -66,9 +71,8 @@
         <p>Opret Ønskeseddel</p>
     </section>
 </div>
-
-
 </div>
+
 <div th:replace="footer :: footer"></div>
 </body>
 </html>
