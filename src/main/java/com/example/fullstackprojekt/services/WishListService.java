@@ -4,6 +4,7 @@ import com.example.fullstackprojekt.models.WishList;
 import com.example.fullstackprojekt.repositories.WishListRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class WishListService {
         List<WishList> myLists = wishListRepository.getAllWishlistByUserId(id);
         List<WishList> listsSharedWithMe = wishListRepository.getAllSharedLists(id);
         myLists.addAll(listsSharedWithMe);
+        Collections.sort(myLists);
         return myLists;
 
     }

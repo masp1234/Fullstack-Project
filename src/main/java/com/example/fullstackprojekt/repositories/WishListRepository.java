@@ -24,23 +24,13 @@ public class WishListRepository {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(QUERY);
 
-
-            /*
-            PreparedStatement preparedStatement=connection.prepareStatement(QUERY);
-            preparedStatement.setInt(1,id);
-
-
-            ResultSet resultSet= preparedStatement.executeQuery();
-
-             */
-
             while (resultSet.next()) {
                 id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
                 int userId = resultSet.getInt(4);
                 int ownerId = resultSet.getInt(5);
-                wishList.add(new WishList(id, name, description, userId, ownerId));
+                wishList.add(new WishList(id, name, description, userId, ownerId, true));
 
             }
             System.out.println("wishlist was found");
@@ -129,10 +119,30 @@ public class WishListRepository {
 
     public List<WishList> getAllSharedLists(int userId) {
 
-        List<WishList> list = new ArrayList<>();
+        List<WishList> wishlistLists = new ArrayList<>();
+
+        String query = "SELECT * FROM wishlist WHERE wishlist_id IN (SELECT wishlist_users_wishlist_id " +
+                "FROM wishlist_users WHERE wishlist_users_user_id=" + userId + ")";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int wishlistId = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String description = resultSet.getString(3);
+                int wishlistUserId = resultSet.getInt(4);
+                int ownerId = resultSet.getInt(5);
+                wishlistLists.add(new WishList(wishlistId, name, description, wishlistUserId, ownerId, false));
+            }
+
+        }
+        catch (SQLException e) {
+            System.out.println("kunne ikke hente de delte lister med userID = " + userId);
+            e.printStackTrace();
+        }
 
 
-        return list;
+        return wishlistLists;
 
     }
 }
