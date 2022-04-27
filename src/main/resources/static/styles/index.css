@@ -224,8 +224,9 @@ button a{
 .signUp-form-popup {
     display: none;
     position: fixed;
-    right: 40%;
-    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
     border: 3px solid #f1f1f1;
     z-index: 9;
     background-color: white;
@@ -237,7 +238,8 @@ button a{
 .form-popup {
     display: none;
     position: fixed;
-    right: 40%;
+    left: 50%;
+    transform: translateX(-50%);
     top: 15%;
     border: 3px solid #f1f1f1;
     z-index: 9;
@@ -364,12 +366,12 @@ button a{
     display: inline-block;
     line-height: 1px;
     padding: 12px 5px;
-    float: right;
 }
 .form-container .btn-cancel:before {
     font-family: sans-serif;
     content: "x";
 }
+
 .login-btn {
     all: unset;
     cursor: pointer;
