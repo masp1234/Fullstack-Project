@@ -9,7 +9,7 @@
 <body>
 <div class="page-container">
     <div class="form-border">
-        <form class="form-container" action="/update-list" method="POST" th:each="Wishlist : ${findListById}">
+        <form class="form-container" action="/update-list" method="POST">
             <div class="logo">
                 <div class="logoContainer">
                     <img id="logo" th:src="@{/images/logo.png}" src="../static/images/logo.png">
@@ -18,12 +18,15 @@
                     <h1>  Ønske<span>Brønden</span></h1>
                 </div>
             </div>
+            <div class="id">
+                <input id="id" type="hidden" th:value="${wishlist.id}" name="id">
+            </div>
             <div class="name">
-                <label for="wishlistName">Ønskelistens navn</label>
+                <label for="wishlistName">Nyt navn på ønskelistenn</label>
                 <input id="wishlistName" type="text" placeholder="Indtast navn" name="wishlistName" th:value="${wishlist.name}">
             </div>
             <div class="description">
-                <label for="wishlistDescription">Beskrivelse til ønskeseddel</label>
+                <label for="wishlistDescription">Ny beskrivelse til ønskeseddel</label>
                 <input id="wishlistDescription" type="text" placeholder="Indtast beskrivelse" name="wishlistDescription" th:value="${wishlist.description}">
             </div>
             <div class="button">
