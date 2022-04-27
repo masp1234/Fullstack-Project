@@ -104,15 +104,14 @@
             <td th:text="${wish.price}" class="body-text">300</td>
             <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
             <td>
-               <!-- <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a> -->
-                <a class="btn btn-danger" onclick="openFormDelete()">Slet</a>
+               <a class="btn btn-danger" onclick="openFormDelete()">Slet</a>
+                <!--  <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
                 <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-
 
 <script>
     function openForm() {
@@ -129,10 +128,8 @@
         document.getElementById("deleteForm").style.display = "none";
         document.getElementById("modal-bg").style.display = "none";
     }
-
 </script>
 <div class="modal-bg" id="modal-bg"></div>
-
 <div class="form-popup" id="myForm">
     <form action="/share-wishlist" method="POST" class="form-container">
         <div class="container">
@@ -144,22 +141,21 @@
                         <label for="email">Indtast deres email her</label>
                         <input type="text" name="email" id="email" placeholder=" Indtast e-mail" required>
                     </div>
-                    <button class="invite-button" type="submit" th:href="@{'/delete/' + ${wish.id}}">Invitér</button>
+                    <button class="invite-button" type="submit">Invitér</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
 
-
-<div class="form-popup" id="deleteForm">
+<div class="form-popup" id="deleteForm" scope="row" th:each="wish: ${wishlist}">
     <form action="/delete/{id}" method="POST" class="form-container">
         <div class="container">
             <div class="loginContainer">
                 <button type="button" class="btn-cancel" onclick="closeForm()"></button>
                 <h1 class="title">Er du sikker på, at du vil slette dette element?</h1>
                 <div class="user-details">
-                    <button type="submit" class="delete-button">SLET ØNSKE</button>
+                    <button type="submit" class="delete-button" th:href="@{'/delete/' + ${wish.id}}">SLET ØNSKE</button>
                 </div>
             </div>
         </div>
