@@ -54,10 +54,12 @@
  <div class="card-box-" th:href="@{'/wishlist/' + ${wishlist.id}}" th:each="wishlist: ${wishLists}">
     <div class="card-div card-div-hover">
         <section class="card-container" >
-            <a th:href="@{'/updatelist/' + ${wishlist.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close">✏️</button></a>
+            <div class="link-container">
+            <a  th:href="@{'/updatelist/' + ${wishlist.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close">✏️</button></a>
             <a  th:href="@{'/deletelist/' + ${wishlist.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close"></button></a>
+        </div>
             <div class="div-container">
-            <h1 th:text="${wishlist.name}" class="card-head">60 års fødselsdag</h1>
+                <a th:href="@{'/wishlist/' + ${wishlist.id}}"><h1 th:text="${wishlist.name}" class="card-head">60 års fødselsdag</h1></a>
             <p th:text="${wishlist.description}">01.01.2023 inviterer vi hele familien til fødselsdag</p>
             </div>
         </section>
