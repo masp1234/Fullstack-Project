@@ -4,8 +4,6 @@ import com.example.fullstackprojekt.models.WishList;
 import com.example.fullstackprojekt.repositories.WishListRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -18,7 +16,7 @@ public class WishListService {
     private WishListRepository wishListRepository;
 
     public List<WishList> getAllByUserId(int id) {
-        List<WishList> myLists = wishListRepository.getAllByUserId(id);
+        List<WishList> myLists = wishListRepository.getAllWishlistByUserId(id);
         List<WishList> listsSharedWithMe = wishListRepository.getAllSharedLists(id);
         myLists.addAll(listsSharedWithMe);
         return myLists;

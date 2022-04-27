@@ -17,7 +17,7 @@ public class WishListRepository {
         connection = ConnectionManager.connectToMySQL();
     }
 
-    public List<WishList> getAllByUserId(int id) {
+    public List<WishList> getAllWishlistByUserId(int id) {
         List<WishList> wishList = new ArrayList();
         final String QUERY = "SELECT * FROM wishlist  WHERE wishlist_user_id=" + id;
         try {
