@@ -6,9 +6,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Raleway:wght@500&display=swap');
     </style>
-    <link rel="stylesheet" href="/src/main/resources/static/styles/my-wishlistStyle.css"
-          th:href="@{my-wishlistStyle.css}"> <!--Path til .css https://youtu.be/YNSnugnQYiI?t=699-->
+
     <link rel="stylesheet" href="../static/styles/navBar.css" th:href="@{/styles/navBar.css}">
+    <link rel="stylesheet" href="/src/main/resources/static/styles/my-wishlistStyle.css"
+          th:href="@{my-wishlistStyle.css}">
     <!--
     <link rel="stylesheet" href="../static/styles/titles.css" th:href="@{/styles/titles.css}"/>
    -->
@@ -94,6 +95,7 @@
                 </td>
             </form>
         </tr>
+
         <tr class="align-middle" scope="row" th:each="wish: ${wishlist}">
             <td th:text="${wish.name}" class="body-text">Nye sko</td>
             <td th:text="${wish.description}" class="body-text">En kort beskrivelse af genstanden eller hvad man nu vil
@@ -136,8 +138,7 @@
                         <label for="email">Indtast deres email her</label>
                         <input type="text" name="email" id="email" placeholder=" Indtast e-mail" required>
                     </div>
-                    <button type="submit">Submit</button>
-
+                    <button type="submit">Invitér</button>
                 </div>
             </div>
         </div>

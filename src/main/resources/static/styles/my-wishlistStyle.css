@@ -1,12 +1,8 @@
 body {
     font-family: 'Raleway', sans-serif;
-
-
-
 }
 
 tbody {
-
 }
 
 .table {
@@ -102,7 +98,6 @@ tbody {
     grid-area: 1 / 2 / 2 / 3;
     padding-top: 1.5%;
     padding-left: 75%;
-
 }
 
 
@@ -192,6 +187,8 @@ tbody {
     box-shadow: 1px 2px #888888;
     font-family: 'Raleway', sans-serif;
     position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .user-details button:hover {
