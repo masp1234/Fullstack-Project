@@ -18,7 +18,7 @@ public class WishListRepository {
 
     public List<WishList> getAllWishlistByUserId(int id) {
         List<WishList> wishList = new ArrayList();
-        final String QUERY = "SELECT * FROM wishlist  WHERE wishlist_user_id=" + id;
+        final String QUERY = "SELECT * FROM wishlist  WHERE wishlist_owner_id=" + id;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(QUERY);
@@ -46,13 +46,12 @@ public class WishListRepository {
 
     public List<WishList> createWishList(WishList wishList){
         List<WishList> newWishList= new ArrayList<>();
-        final String QUERY="INSERT INTO wishlist ( wishlist_name, wishlist_description, wishlist_user_id, wishlist_owner_id) VALUES(?, ? , ? , ?)";
+        final String QUERY="INSERT INTO wishlist ( wishlist_name, wishlist_description, wishlist_owner_id) VALUES(?, ? , ?)";
         try {
             PreparedStatement preparedStatement= connection.prepareStatement(QUERY);
-            preparedStatement.setString(1,wishList.getName());
-            preparedStatement.setString(2,wishList.getDescription());
-            preparedStatement.setInt(3,wishList.getOwnerId());
-            preparedStatement.setInt(4,wishList.getOwnerId());
+            preparedStatement.setString(1, wishList.getName());
+            preparedStatement.setString(2, wishList.getDescription());
+            preparedStatement.setInt(3, wishList.getOwnerId());
             preparedStatement.executeUpdate();
             newWishList.add(new WishList(wishList.getName(), wishList.getDescription(), wishList.getOwnerId()));
             preparedStatement.close();
@@ -130,7 +129,7 @@ public class WishListRepository {
                 int wishlistId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
-                int ownerId = resultSet.getInt(5);
+                int ownerId = resultSet.getInt(4);
 
                 wishlistLists.add(new WishList(wishlistId, name, description, ownerId, false));
 
