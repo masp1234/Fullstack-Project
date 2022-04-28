@@ -26,7 +26,7 @@ public class WishController {
     @GetMapping("/bruger-forside/{id}")
     public String brugerForside(@PathVariable("id") int id, Model model){
         model.addAttribute("findUserById", wishRepository.findListById(id));
-        return "bruger-forside";
+        return "user-landing-page";
     }
     @GetMapping("/wishlist/{id}")
     public String getAllWishesByWishListId(@PathVariable("id") int id, Model model, HttpSession session) {

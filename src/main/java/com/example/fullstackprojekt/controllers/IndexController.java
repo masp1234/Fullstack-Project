@@ -41,11 +41,6 @@ public class IndexController {
         return "signUp.html";
     }
 
-    @GetMapping("/footer")
-    public String footer() {
-        return "footer";
-    }
-
     @GetMapping("/create-wishlist")
     public String createlist(){
         return "create-wishlist";

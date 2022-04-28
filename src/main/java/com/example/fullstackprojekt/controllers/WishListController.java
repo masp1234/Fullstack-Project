@@ -2,7 +2,6 @@ package com.example.fullstackprojekt.controllers;
 import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.models.WishList;
 
-import com.example.fullstackprojekt.repositories.WishListRepository;
 import com.example.fullstackprojekt.services.WishListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,16 +24,16 @@ public class WishListController {
     }
 
     @GetMapping("/bruger-forside")
-    public String brugerForside(HttpSession session, Model model){
+    public String userLandingPage(HttpSession session, Model model){
         User user = (User) session.getAttribute("user");
         model.addAttribute("user", user);
         model.addAttribute("wishLists", wishListService.getAllByUserId(user.getId()));
-        return "bruger-forside";
+        return "user-landing-page";
     }
 
     @PostMapping("/add-wishlist")
-    public String opretList(@RequestParam("wishlistName") String name,
-                            @RequestParam("wishlistDescription") String description,
+    public String createWishList(@RequestParam("wishlistName") String name,
+                             @RequestParam("wishlistDescription") String description,
                              HttpSession httpSession){
          User user = (User) httpSession.getAttribute("user");
         wishListService.createWishList(new WishList(name,description, user.getId()));
@@ -42,7 +41,7 @@ public class WishListController {
     }
 
     @GetMapping("/updatelist/{id}")
-    public String findListById(@PathVariable ("id") int id, Model model){
+    public String findWishListById(@PathVariable ("id") int id, Model model){
         WishList wishList = wishListService.findListById(id);
         System.out.println(wishList);
         model.addAttribute("wishlist", wishList);
@@ -51,14 +50,14 @@ public class WishListController {
     }
 
     @PostMapping(value = "update-list")
-    public String updateList(@RequestParam("wishlistId") int id,
+    public String updateWishList(@RequestParam("wishlistId") int id,
                              @RequestParam("wishlistName") String name,
                              @RequestParam("wishlistDescription") String description){
         wishListService.updateListById(new WishList(id, name, description));
         return "redirect:/bruger-forside";
     }
     @GetMapping("/deletelist/{id}")
-    public String deleteListWish(@PathVariable("id") int id){
+    public String deleteWishList(@PathVariable("id") int id){
         wishListService.deleteById(id);
         return "redirect:/bruger-forside";
     }

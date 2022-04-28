@@ -88,8 +88,7 @@ public class WishListRepository {
     }
 
     public void updateByid(WishList wishList) {
-
-        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_id=?";
+        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_user_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_QUERY);
             preparedStatement.setString(1,wishList.getName());
