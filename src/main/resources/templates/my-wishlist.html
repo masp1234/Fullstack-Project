@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="../static/styles/navBar.css" th:href="@{/styles/navBar.css}">
     <link rel="stylesheet" href="/src/main/resources/static/styles/my-wishlistStyle.css"
-          th:href="@{my-wishlistStyle.css}">
+          th:href="@{/styles/my-wishlistStyle.css}">
     <!--
     <link rel="stylesheet" href="../static/styles/titles.css" th:href="@{/styles/titles.css}"/>
    -->
@@ -20,6 +20,7 @@
 
 </head>
 <body>
+
 <div class="navbar">
     <a href="/bruger-forside" style="text-decoration: none;">
         <div class="left-navbar">
@@ -45,7 +46,7 @@
 <div class="header-table">
     <table class="table2">
         <div class="header3">
-            <div class="div1"><h1>Navn på ønskeliste her</h1></div>
+            <div class="div1"><h1>Navn på ønskeliste herOLDOLDOLD</h1></div>
             <div class="div2">
                 <button class="btn btn-info" onclick="openForm()">Del ønske</button>
             </div>
@@ -89,7 +90,7 @@
                 <td>
                     <div class="table-input">
                         <label for="link"></label>
-                        <input type="url" name="link" id="link" placeholder=" Indtast link" required>
+                        <input type="url" name="link" id="link" placeholder=" Indtast link">
                     </div>
                 </td>
                 <td>
@@ -105,7 +106,7 @@
             <td th:text="${wish.price}" class="body-text">300</td>
             <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
             <td>
-               <a class="btn btn-danger" onclick="openFormDelete()">Slet</a>
+                <a class="btn btn-danger" onclick="openFormDelete()">Slet</a>
                 <!--  <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
                 <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
             </td>
@@ -154,7 +155,7 @@
         <div class="container">
             <div class="loginContainer">
                 <button type="button" class="btn-cancel" onclick="closeForm()"></button>
-                <h1 class="title">Er du sikker på, at du vil slette dette element?</h1>
+                <h1 class="title">Er du sikker på, at du vil slette <span th:text="${wish.name}">dette ønske</span>?</h1>
                 <div class="user-details">
                     <button type="submit" class="delete-button" th:href="@{'/delete/' + ${wish.id}}">SLET ØNSKE</button>
                 </div>
