@@ -133,6 +133,10 @@ ul{
 a{
     text-decoration: none;
 }
+.link-container span{
+    color: rgba(189, 141, 26, 0.84);
+    align-self: center;
+}
 
 
 

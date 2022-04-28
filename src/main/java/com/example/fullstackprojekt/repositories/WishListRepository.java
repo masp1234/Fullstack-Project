@@ -25,23 +25,17 @@ public class WishListRepository {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(QUERY);
 
-
-            /*
-            PreparedStatement preparedStatement=connection.prepareStatement(QUERY);
-            preparedStatement.setInt(1,id);
-
-
-            ResultSet resultSet= preparedStatement.executeQuery();
-
-             */
-
             while (resultSet.next()) {
                 int wishlistId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
                 int userId = resultSet.getInt(4);
                 int ownerId = resultSet.getInt(5);
-                wishList.add(new WishList(wishlistId, name, description, userId, ownerId));
+
+
+
+                wishList.add(new WishList(wishlistId, name, description, userId, ownerId, true));
+
 
             }
             System.out.println("wishlist was found");
@@ -143,7 +137,9 @@ public class WishListRepository {
                 String description = resultSet.getString(3);
                 int wishlistUserId = resultSet.getInt(4);
                 int ownerId = resultSet.getInt(5);
-                wishlistLists.add(new WishList(wishlistId, name, description, wishlistUserId, ownerId));
+
+                wishlistLists.add(new WishList(wishlistId, name, description, wishlistUserId, ownerId, false));
+
             }
 
         }

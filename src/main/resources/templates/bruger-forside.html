@@ -57,6 +57,8 @@
             
             <div class="link-container">
             <a  th:href="@{'/updatelist/' + ${wishlist.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close">✏️</button></a>
+                <span th:if="${wishlist.isOwner == true}">Ejer</span>
+                <span th:if="${wishlist.isOwner == false}">Gæst</span>
             <a  th:href="@{'/deletelist/' + ${wishlist.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close"></button></a>
         </div>
         <a class="link-to-wishlist" th:href="@{'/wishlist/' + ${wishlist.id}}">
