@@ -75,10 +75,10 @@ public class WishListRepository {
            PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
            ResultSet resultSet=preparedStatement.executeQuery();
            resultSet.next();
-           id=resultSet.getInt(1);
+           int wishlistId = resultSet.getInt(1);
            String name=resultSet.getString(2);
            String description=resultSet.getString(3);
-           wishList= new WishList(id, name, description);
+           wishList= new WishList(wishlistId, name, description);
             System.out.println("is found");
         }catch (SQLException e){
             System.out.println(e + "Not Found");
@@ -87,23 +87,23 @@ public class WishListRepository {
         return wishList;
     }
 
-    public List<WishList> updateByid(WishList wishList) {
-        List<WishList> newWishLists= new ArrayList<>();
-        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_user_id=?";
+    public void updateByid(WishList wishList) {
+
+        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_QUERY);
             preparedStatement.setString(1,wishList.getName());
             preparedStatement.setString(2,wishList.getDescription());
             preparedStatement.setInt(3, wishList.getId());
             preparedStatement.executeUpdate();
-            newWishLists.add(new WishList(wishList.getName(), wishList.getDescription()));
+
             preparedStatement.close();
+
             System.out.println("is update");
         }catch (SQLException e){
             System.out.println("Could not update");
             e.printStackTrace();
         }
-        return newWishLists;
     }
 
     public void deleteById(int id){

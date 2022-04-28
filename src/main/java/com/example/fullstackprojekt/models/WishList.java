@@ -12,15 +12,15 @@ public class WishList implements Comparable<WishList>{
     private boolean isOwner;
 
 
-    public WishList(int wishListId, String name, String description, List<Wish> wishes) {
-        this.wishListId = wishListId;
+    public WishList(int id, String name, String description, List<Wish> wishes) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.wishes = wishes;
     }
 
-    public WishList(int wishListId, String name, String description, int userId, int ownerId) {
-        this.wishListId = wishListId;
+    public WishList(int id, String name, String description, int userId, int ownerId) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.userId = userId;
@@ -47,10 +47,10 @@ public class WishList implements Comparable<WishList>{
         this.description=description;
     }
 
-    public WishList(int wishListId, String name, String description) {
-        this.wishListId=wishListId;
-        this.name=name;
-        this.description=description;
+    public WishList(int id, String name, String description) {
+        this.id = id;
+        this.name= name;
+        this.description = description;
     }
 
     public boolean getIsOwner() {
@@ -58,7 +58,7 @@ public class WishList implements Comparable<WishList>{
     }
 
     public int getId() {
-        return wishListId;
+        return id;
     }
 
     public int getOwnerId() {
@@ -84,7 +84,7 @@ public class WishList implements Comparable<WishList>{
     @Override
     public String toString() {
         return "WishList{" +
-                "id=" + wishListId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", userId=" + userId +
