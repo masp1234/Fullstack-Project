@@ -48,7 +48,7 @@ public class UserController {
             return "redirect:/bruger-forside";
         } else{
             model.addAttribute("loginFailed","loginFailed");
-            return "login";
+            return "redirect:/";
         }
 
     }
