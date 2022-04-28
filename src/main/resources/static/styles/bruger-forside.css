@@ -133,8 +133,9 @@ ul{
 .link-to-wishlist{
     flex-grow: 10;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     text-decoration: none;
+    width: 100%;
 }
 
 a{
