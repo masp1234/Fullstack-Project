@@ -34,11 +34,20 @@ public class UserService {
         return currentUser;
     }
 
-    public void shareWishlist(String email, int wishlistId) {
-        User user = userRepository.selectUserByEmail(email);
-        if(user != null){
-            userRepository.shareWishlistWithUser(user.getId(), wishlistId);
+    public boolean shareWishlist(String email, int wishlistId, User userUsed) {
+        boolean canBeShared;
+        if(!userUsed.getEmail().equalsIgnoreCase(email)) {
+            User user = userRepository.selectUserByEmail(email);
+            if (user != null) {
+                userRepository.shareWishlistWithUser(user.getId(), wishlistId);
+                canBeShared = true;
+            }else{
+                canBeShared = false;
+            }
+        }else{
+            canBeShared = false;
         }
+        return canBeShared;
     }
 }
 

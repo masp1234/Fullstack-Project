@@ -29,10 +29,12 @@ public class UserController {
     }
 
     @PostMapping("/share-wishlist")
-    public String shareWishlist(@RequestParam("email") String email, HttpSession session){
+    public String shareWishlist(@RequestParam("email") String email, HttpSession session,Model model){
         // Vi har allerede gemt id som session, når man klikker ind på wishlist
+        User user = (User) session.getAttribute("user");
         int wishlistId = (int) session.getAttribute("wishlistSavedId");
-        userService.shareWishlist(email,wishlistId);
+        boolean canBeShared = userService.shareWishlist(email,wishlistId, user);
+        model.addAttribute("canBeShared", canBeShared);
         return "redirect:/wishlist/" + wishlistId;
     }
 

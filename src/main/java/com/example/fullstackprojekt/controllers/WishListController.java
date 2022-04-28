@@ -43,7 +43,10 @@ public class WishListController {
 
     @GetMapping("/updatelist/{id}")
     public String findListById(@PathVariable ("id") int id, Model model){
-        model.addAttribute("wishlist", wishListService.findListById(id));
+        WishList wishList = wishListService.findListById(id);
+        System.out.println(wishList);
+        model.addAttribute("wishlist", wishList);
+
         return "update-wishlist";
     }
 

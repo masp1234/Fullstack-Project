@@ -143,6 +143,8 @@
                         <label for="email">Indtast deres email her</label>
                         <input type="text" name="email" id="email" placeholder=" Indtast e-mail" required>
                     </div>
+                    <p th:if="${canBeShared == true}">Du har delt du ønskeseddel</p>
+                    <p th:if="${canBeShared == false}" style="color: red;">Ønskeseddel kunne ikke deles</p>
                     <button class="invite-button" type="submit">Invitér</button>
                 </div>
             </div>
