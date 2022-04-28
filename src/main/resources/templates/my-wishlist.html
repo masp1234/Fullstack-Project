@@ -46,9 +46,9 @@
 <div class="header-table">
     <table class="table2">
         <div class="header3">
-            <div class="div1"><h1>Navn på ønskeliste herOLDOLDOLD</h1></div>
+            <div class="div1"><h1>Navn på ønskeliste her</h1></div>
             <div class="div2">
-                <button class="btn btn-info" onclick="openForm()">Del ønske</button>
+                <button class="btn btn-info" onclick="openForm()">🔗</button>
             </div>
         </div>
     </table>
@@ -94,7 +94,9 @@
                     </div>
                 </td>
                 <td>
-                    <button type="submit" class="btn btn-primary">Opret ønske</button>
+                    <div class="table-input">
+                    <button type="submit" class="btn btn-primary">🛠️</button>
+                    </div>
                 </td>
             </form>
         </tr>
@@ -106,9 +108,13 @@
             <td th:text="${wish.price}" class="body-text">300</td>
             <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
             <td>
-                <a class="btn btn-danger" onclick="openFormDelete()">Slet</a>
-                <!--  <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
-                <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
+                <!-- <a class="btn btn-danger" onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}">Slet</a>
+                 <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
+                 <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
+                <!-- <a class="btn btn-warning" onclick="openFormUpdateWishlist()">Rediger</a>-->
+
+                <a onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close"></button></a>
+                <a th:href="@{'update-wish/' + ${wish.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close">✏️</button></a>
             </td>
         </tr>
         </tbody>
@@ -121,6 +127,11 @@
         document.getElementById("modal-bg").style.display = "block";
     }
 
+    function openFormUpdateWishlist() {
+        document.getElementById("update-wishForm").style.display = "block";
+        document.getElementById("modal-bg").style.display = "block";
+    }
+
     function openFormDelete() {
         document.getElementById("deleteForm").style.display = "block";
         document.getElementById("modal-bg").style.display = "block";
@@ -129,9 +140,11 @@
         document.getElementById("myForm").style.display = "none";
         document.getElementById("deleteForm").style.display = "none";
         document.getElementById("modal-bg").style.display = "none";
+        document.getElementById("update-wishForm").style.display = "none";
     }
 </script>
 <div class="modal-bg" id="modal-bg"></div>
+
 <div class="form-popup" id="myForm">
     <form action="/share-wishlist" method="POST" class="form-container">
         <div class="container">
@@ -160,6 +173,50 @@
                 <h1 class="title">Er du sikker på, at du vil slette <span th:text="${wish.name}">dette ønske</span>?</h1>
                 <div class="user-details">
                     <button type="submit" class="delete-button" th:href="@{'/delete/' + ${wish.id}}">SLET ØNSKE</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="update-wish-form-popup" id="update-wishForm">
+    <form action="/update-wish" method="POST" class="update-wish-form-container">
+        <div class="container">
+            <div class="update-container">
+                <button type="button" class="btn-cancel" onclick="closeForm()"></button>
+                <h1 class="title">Rediger dit ønske</h1>
+                <div class="user-details">
+                    <div class="input-box">
+                        <td> <!-- Table Data -->
+                            <div class="table-input">
+                                <input id="id" type="hidden"  name="id">
+                            </div>
+                            <div class="table-input">
+                                <label for="name">NAVN</label>
+                                <input id="name" type="text"  name="name">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="table-input">
+                                <label for="description">BESKRIVELSE</label>
+                                <input id="description" type="text"  name="description">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="table-input">
+                                <label for="price">PRIS</label>
+                                <input id="price" type="text"  name="price">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="table-input">
+                                <label for="link">LINK</label>
+                                <input id="link" type="url" name="link">
+                            </div>
+                        </td>
+
+                    </div>
+                    <button class="edit-button" type="submit">Rediger</button>
                 </div>
             </div>
         </div>
