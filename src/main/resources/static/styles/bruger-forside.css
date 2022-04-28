@@ -96,12 +96,12 @@ ul{
     -moz-border-radius: 15px;
     margin-bottom: 30px;
 }
-.link-container{
+.link-container-owner{
     flex-grow: 1;
     width: 100%;
 }
 
-.link-container a{
+.link-container-owner a{
     margin-top: 10px;
 }
 
@@ -109,9 +109,16 @@ ul{
     flex-grow: 10;
 }
 
-.link-container{
+.link-container-owner{
     display: flex;
     justify-content: space-between;
+}
+
+.link-container-owner span{
+
+     color: rgba(189, 141, 26, 0.84);
+    align-self: center;
+
 }
 
 .navigate-to-wishes{
@@ -135,9 +142,26 @@ a{
 }
 .link-container span{
     color: rgba(189, 141, 26, 0.84);
-
+    align-self: center;
 }
 
+.link-container-guest{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    flex-grow: 1;
+    width: 100%;
+
+    margin-top: 10px;
+}
+.link-container-guest span{
+
+ color: rgba(189, 141, 26, 0.84);
+    align-self: center;
+
+}
 
 
 
