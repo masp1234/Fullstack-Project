@@ -43,6 +43,10 @@ public class WishList implements Comparable<WishList>{
     public String getName() {
         return name;
     }
+
+    public boolean isOwner() {
+        return isOwner;
+    }
     @Override
     public String toString() {
         return "WishList{" +
