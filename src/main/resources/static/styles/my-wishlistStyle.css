@@ -33,11 +33,11 @@ tbody {
 }
 
 .table .header-name {
-  /*  border-top-left-radius: 30px;*/
+    /*  border-top-left-radius: 30px;*/
 }
 
 .table .header-action {
-   /* border-top-right-radius: 30px;*/
+    /* border-top-right-radius: 30px;*/
 
 }
 
@@ -97,7 +97,7 @@ tbody {
 .div2 {
     grid-area: 1 / 2 / 2 / 3;
     padding-top: 1.5%;
-    padding-left: 75%;
+    padding-left: 50%;
 }
 
 
