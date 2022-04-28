@@ -1,11 +1,9 @@
 package com.example.fullstackprojekt.repositories;
 
-import com.example.fullstackprojekt.models.Wish;
 import com.example.fullstackprojekt.models.WishList;
 import com.example.fullstackprojekt.utilities.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +27,11 @@ public class WishListRepository {
                 int wishlistId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
-                int userId = resultSet.getInt(4);
-                int ownerId = resultSet.getInt(5);
+                int ownerId = resultSet.getInt(4);
 
 
 
-                wishList.add(new WishList(wishlistId, name, description, userId, ownerId, true));
+                wishList.add(new WishList(wishlistId, name, description, ownerId, true));
 
 
             }
@@ -54,10 +51,10 @@ public class WishListRepository {
             PreparedStatement preparedStatement= connection.prepareStatement(QUERY);
             preparedStatement.setString(1,wishList.getName());
             preparedStatement.setString(2,wishList.getDescription());
-            preparedStatement.setInt(3,wishList.getUserId());
-            preparedStatement.setInt(4,wishList.getUserId());
+            preparedStatement.setInt(3,wishList.getOwnerId());
+            preparedStatement.setInt(4,wishList.getOwnerId());
             preparedStatement.executeUpdate();
-            newWishList.add(new WishList(wishList.getName(), wishList.getDescription(), wishList.getUserId()));
+            newWishList.add(new WishList(wishList.getName(), wishList.getDescription(), wishList.getOwnerId()));
             preparedStatement.close();
             System.out.println("created");
         }
@@ -70,15 +67,15 @@ public class WishListRepository {
 
     public WishList findWishListById(int id){
         final String FIND_QUERY="SELECT * FROM wishlist  WHERE wishlist_id="+id;
-        WishList wishList=null;
+        WishList wishList = null;
         try {
            PreparedStatement preparedStatement=connection.prepareStatement(FIND_QUERY);
            ResultSet resultSet=preparedStatement.executeQuery();
            resultSet.next();
            int wishlistId = resultSet.getInt(1);
-           String name=resultSet.getString(2);
-           String description=resultSet.getString(3);
-           wishList= new WishList(wishlistId, name, description);
+           String name = resultSet.getString(2);
+           String description = resultSet.getString(3);
+           wishList = new WishList(wishlistId, name, description);
             System.out.println("is found");
         }catch (SQLException e){
             System.out.println(e + "Not Found");
@@ -88,7 +85,7 @@ public class WishListRepository {
     }
 
     public void updateByid(WishList wishList) {
-        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_user_id=?";
+        final String UPDATE_QUERY="UPDATE wishlist SET wishlist_name=?, wishlist_description=? WHERE wishlist_id=?";
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_QUERY);
             preparedStatement.setString(1,wishList.getName());
@@ -120,12 +117,12 @@ public class WishListRepository {
     }
 
 
-    public List<WishList> getAllSharedLists(int userId) {
+    public List<WishList> getAllSharedLists(int id) {
 
         List<WishList> wishlistLists = new ArrayList<>();
 
         String query = "SELECT * FROM wishlist WHERE wishlist_id IN (SELECT wishlist_users_wishlist_id " +
-                "FROM wishlist_users WHERE wishlist_users_user_id=" + userId + ")";
+                "FROM wishlist_users WHERE wishlist_users_user_id=" + id + ")";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -133,16 +130,15 @@ public class WishListRepository {
                 int wishlistId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
-                int wishlistUserId = resultSet.getInt(4);
                 int ownerId = resultSet.getInt(5);
 
-                wishlistLists.add(new WishList(wishlistId, name, description, wishlistUserId, ownerId, false));
+                wishlistLists.add(new WishList(wishlistId, name, description, ownerId, false));
 
             }
 
         }
         catch (SQLException e) {
-            System.out.println("kunne ikke hente de delte lister med userID = " + userId);
+            System.out.println("kunne ikke hente de delte lister med userID = " + id);
             e.printStackTrace();
         }
 
