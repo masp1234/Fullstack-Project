@@ -1,13 +1,9 @@
 package com.example.fullstackprojekt.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.List;
 
 public class WishList {
-    private int id;
+    private int wishListId;
     private String name;
     private String description;
     private int userId;
@@ -15,15 +11,15 @@ public class WishList {
     private List<Wish> wishes;
 
 
-    public WishList(int id, String name, String description, List<Wish> wishes) {
-        this.id = id;
+    public WishList(int wishListId, String name, String description, List<Wish> wishes) {
+        this.wishListId = wishListId;
         this.name = name;
         this.description = description;
         this.wishes = wishes;
     }
 
-    public WishList(int id, String name, String description, int userId, int ownerId) {
-        this.id = id;
+    public WishList(int wishListId, String name, String description, int userId, int ownerId) {
+        this.wishListId = wishListId;
         this.name = name;
         this.description = description;
         this.userId = userId;
@@ -41,8 +37,14 @@ public class WishList {
         this.description=description;
     }
 
+    public WishList(int wishListId, String name, String description) {
+        this.wishListId=wishListId;
+        this.name=name;
+        this.description=description;
+    }
+
     public int getId() {
-        return id;
+        return wishListId;
     }
 
     public int getOwnerId() {
@@ -68,7 +70,7 @@ public class WishList {
     @Override
     public String toString() {
         return "WishList{" +
-                "id=" + id +
+                "id=" + wishListId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", userId=" + userId +

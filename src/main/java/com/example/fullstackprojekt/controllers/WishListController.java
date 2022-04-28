@@ -41,18 +41,18 @@ public class WishListController {
         return "redirect:/bruger-forside";
     }
     @GetMapping("/updatelist/{id}")
-    public String findListById(@PathVariable ("id") int id, Model model){
-        WishList wishList= wishListService.findListById(id);
-        System.out.println(wishList);
+    public String findListById(@PathVariable ("id") int id, Model model, HttpSession session){
+        WishList wishList=(WishList) session.getAttribute("wishlist");
         model.addAttribute("wishlist", wishList);
+        model.addAttribute("wishlist", wishListService.findListById(id));
         return "update-wishlist";
     }
 
     @PostMapping(value = "update-list")
     public String updateList(@RequestParam("wishlistName") String name,
                              @RequestParam("wishlistDescription") String description,
-                             HttpSession httpSession){
-        wishListService.updateListById(new WishList (name,description));
+                             HttpSession session){
+        wishListService.updateListById(new WishList(name,description));
         return "redirect:/bruger-forside";
     }
     @GetMapping("/deletelist/{id}")
