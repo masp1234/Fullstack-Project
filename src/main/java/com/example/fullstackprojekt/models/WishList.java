@@ -21,6 +21,12 @@ public class WishList implements Comparable<WishList>{
         this.description= description;
         this.ownerId = ownerId;
     }
+    public WishList(int id,String name, String description, int ownerId) {
+        this.id = id;
+        this.name= name;
+        this.description= description;
+        this.ownerId = ownerId;
+    }
 
     public WishList(int id, String name, String description) {
         this.id = id;

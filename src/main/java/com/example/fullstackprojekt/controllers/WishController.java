@@ -2,6 +2,7 @@ package com.example.fullstackprojekt.controllers;
 
 import com.example.fullstackprojekt.models.User;
 import com.example.fullstackprojekt.models.Wish;
+import com.example.fullstackprojekt.models.WishList;
 import com.example.fullstackprojekt.repositories.WishRepository;
 import com.example.fullstackprojekt.services.WishService;
 import org.springframework.stereotype.Controller;
@@ -23,11 +24,7 @@ public class WishController {
         this.wishService = wishService;
     }
 
-    @GetMapping("/bruger-forside/{id}")
-    public String brugerForside(@PathVariable("id") int id, Model model){
-        model.addAttribute("findUserById", wishRepository.findListById(id));
-        return "user-landing-page";
-    }
+
     @GetMapping("/wishlist/{id}")
     public String getAllWishesByWishListId(@PathVariable("id") int id, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -35,6 +32,10 @@ public class WishController {
         session.setAttribute("wishlistSavedId", id);
         List<Wish> wishes = wishService.getAllWishesByWishListId(id);
         model.addAttribute("wishlist", wishes);
+        WishList wishList = wishService.getWishlistById(id);
+        model.addAttribute("wishlistObject",wishList);
+        System.out.println(wishList.getOwnerId());
+        System.out.println(user.getId());
         return "my-wishlist";
     }
 

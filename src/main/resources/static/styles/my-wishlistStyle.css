@@ -8,6 +8,7 @@ tbody {
     display: grid;
     justify-content: center;
     align-items: center;
+    
 }
 
 .table table {
@@ -28,6 +29,9 @@ tbody {
     font-size: 18px;
     font-weight: 800;
 
+}
+.headerTable{
+    margin-bottom: 30px;
 }
 
 .table .header-name {

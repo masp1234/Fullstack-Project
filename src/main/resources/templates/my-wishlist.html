@@ -43,12 +43,12 @@
     </div>
 </div>
 
-<div class="header-table">
+<div class="header-table headerTable">
     <table class="table2">
         <div class="header3">
-            <div class="div1"><h1>Navn på ønskeliste her</h1></div>
+            <div class="div1"><h1 th:text="${wishlistObject.name}">Navn på ønskeliste her</h1></div>
             <div class="div2">
-                <button class="btn btn-info" onclick="openForm()">🔗</button>
+                <button class="btn btn-light btn-outline-primary" onclick="openForm()" th:if="${user.id == wishlistObject.ownerId}">🔗</button>
             </div>
         </div>
     </table>
@@ -65,7 +65,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr scope="row">
+        <tr scope="row" th:if="${user.id == wishlistObject.ownerId}">
             <form action="/add-wish" method="POST">
                 <td> <!-- Table Data -->
                     <div class="table-input">
@@ -95,7 +95,7 @@
                 </td>
                 <td>
                     <div class="table-input">
-                    <button type="submit" class="btn btn-primary">🛠️</button>
+                    <button type="submit" class="btn btn-light btn-outline-info">🛠️</button>
                     </div>
                 </td>
             </form>
@@ -113,8 +113,11 @@
                  <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
                 <!-- <a class="btn btn-warning" onclick="openFormUpdateWishlist()">Rediger</a>-->
 
-                <a onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close"></button></a>
-                <a th:href="@{'update-wish/' + ${wish.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close">✏️</button></a>
+                <a onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}"></button></a>
+                <a th:href="@{'update-wish/' + ${wish.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}">✏️</button></a>
+                <p>Ja</p>
+                <p>Nej</p>
+                <button th:if="${user.id != wishlistObject.ownerId}"></button>
             </td>
         </tr>
         </tbody>
@@ -216,7 +219,7 @@
                         </td>
 
                     </div>
-                    <button class="edit-button" type="submit">Rediger</button>
+                    <button class="edit-button" type="submit" >Rediger</button>
                 </div>
             </div>
         </div>

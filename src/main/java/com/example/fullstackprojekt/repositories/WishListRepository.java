@@ -74,7 +74,8 @@ public class WishListRepository {
            int wishlistId = resultSet.getInt(1);
            String name = resultSet.getString(2);
            String description = resultSet.getString(3);
-           wishList = new WishList(wishlistId, name, description);
+           int ownerId = resultSet.getInt(4);
+           wishList = new WishList(wishlistId, name, description,ownerId);
             System.out.println("is found");
         }catch (SQLException e){
             System.out.println(e + "Not Found");

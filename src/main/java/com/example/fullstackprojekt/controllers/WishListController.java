@@ -43,7 +43,6 @@ public class WishListController {
     @GetMapping("/updatelist/{id}")
     public String findWishListById(@PathVariable ("id") int id, Model model){
         WishList wishList = wishListService.findListById(id);
-        System.out.println(wishList);
         model.addAttribute("wishlist", wishList);
 
         return "update-wishlist";
@@ -61,4 +60,5 @@ public class WishListController {
         wishListService.deleteById(id);
         return "redirect:/bruger-forside";
     }
+
 }
