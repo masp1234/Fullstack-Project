@@ -407,16 +407,25 @@ margin-top: 6%;
     margin-left: 65%;
 }
 
+.status {
+    border-radius: 10px;
+    background-color: red;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
 
 .status-free {
-    background-color: #f2003c;
+    background: #ffffff;
     font-family: 'Raleway', sans-serif;
     border-radius: 10px;
     border-style: none;
+    border: 2px solid #f2003c;
 }
 .status-reserved {
-    background-color: #3EB489;
+    background: #ffffff;
+    border: #3EB489;
     font-family: 'Raleway', sans-serif;
     border-radius: 10px;
     border-style: none;
+    border: 2px solid #3EB489;
 }
