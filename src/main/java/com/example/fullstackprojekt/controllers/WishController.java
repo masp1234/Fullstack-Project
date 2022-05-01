@@ -68,7 +68,6 @@ public class WishController {
         return "redirect:/wishlist/" + session.getAttribute("wishlistSavedId");
     }
 
-
     @GetMapping("/delete/{id}")
     public String deleteWish(@PathVariable("id") int id, HttpSession session){
       wishService.deleteById(id);
@@ -83,5 +82,12 @@ public class WishController {
         System.out.println(wish);
         model.addAttribute("wish", wish);
         return "update-wish";
+    }
+    @GetMapping("/wishlist/reserve-wish/{id}")
+    public String reserveWish(@PathVariable("id") int id, HttpSession session) {
+        wishService.reserveWish(id);
+
+
+        return "redirect:/wishlist/" + session.getAttribute("wishlistSavedId");
     }
 }

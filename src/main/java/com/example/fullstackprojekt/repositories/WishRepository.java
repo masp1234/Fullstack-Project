@@ -82,7 +82,15 @@ public class WishRepository {
             String description = resultSet.getString(3);
             double price = resultSet.getDouble(4);
             String link = resultSet.getString(5);
-            wish = new Wish(id, name, description, price, link);
+            int wishlistId = resultSet.getInt(6);
+            int isReservedResult = resultSet.getInt(7);
+
+            boolean isReserved = true;
+            if (isReservedResult == 0) {
+                isReserved = false;
+            }
+
+            wish = new Wish(id, name, description, price, link, wishlistId, isReserved);
 
 
 
@@ -127,4 +135,23 @@ public class WishRepository {
         }
     }
 
-}
+    public void reserveWish(int id, int isReserved) {
+        String query = "UPDATE wish Set wish_is_reserved = ? WHERE wish_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, isReserved);
+            preparedStatement.setInt(2, id);
+
+
+            preparedStatement.executeUpdate();
+            System.out.println("is update");
+
+        } catch (SQLException e) {
+            System.out.println("Could not update");
+            e.printStackTrace();
+        }
+    }
+
+    }
+

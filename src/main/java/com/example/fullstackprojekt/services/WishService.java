@@ -39,4 +39,17 @@ public class WishService {
     public WishList getWishlistById(int id) {
         return wishListService.findListById(id);
     }
+
+    public void reserveWish(int id) {
+        Wish wish = wishRepository.selectWishById(id);
+        int isReserved = -1;
+        if (wish.isReserved() == true) {
+            isReserved = 0;
+        }
+        else {
+            isReserved = 1;
+        }
+
+        wishRepository.reserveWish(id, isReserved);
+    }
 }

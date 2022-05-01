@@ -61,6 +61,7 @@
             <th>BESKRIVELSE</th>
             <th>PRIS</th>
             <th>LINK</th>
+            <th th:if="${user.id != wishlistObject.ownerId}">RESERVERET</th>
             <th class="header-action">HANDLING</th>
         </tr>
         </thead>
@@ -100,6 +101,11 @@
                 </td>
             </form>
         </tr>
+        <tr scope="row" th:if="${user.id != wishlistObject.ownerId}">
+
+
+
+        </tr>
         <tr class="align-middle" scope="row" th:each="wish: ${wishlist}">
             <td th:text="${wish.name}" class="body-text">Nye sko</td>
             <td th:text="${wish.description}" class="body-text">En kort beskrivelse af genstanden eller hvad man nu vil
@@ -107,17 +113,27 @@
             </td>
             <td th:text="${wish.price}" class="body-text">300</td>
             <td th:text="${wish.link}" class="body-text"><a href="google.com">google.com</a></td>
-            <td>
                 <!-- <a class="btn btn-danger" onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}">Slet</a>
                  <a class="btn btn-warning" th:href="@{'update-wish/' + ${wish.id}}">Rediger</a>
                  <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
                 <!-- <a class="btn btn-warning" onclick="openFormUpdateWishlist()">Rediger</a>-->
 
+
+        <div th:if="${user.id != wishlistObject.ownerId}">
+            <td class="align-middle" th:if="${wish.isReserved == true}">Ja</td>
+            <td class="align-middle" th:unless="${wish.isReserved == true}">Nej</td>
+         </div>
+
+
+
+
+            <td>
                 <a onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}"></button></a>
                 <a th:href="@{'update-wish/' + ${wish.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}">✏️</button></a>
-                <p>Ja</p>
-                <p>Nej</p>
-                <button th:if="${user.id != wishlistObject.ownerId}"></button>
+
+                <a th:href="@{'reserve-wish/' + ${wish.id}}">
+                    <button th:if="${user.id != wishlistObject.ownerId}"></button>
+                </a>
             </td>
         </tr>
         </tbody>
