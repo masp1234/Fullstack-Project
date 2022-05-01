@@ -127,12 +127,15 @@
 
 
 
-            <td>
+            <td class="">
                 <a onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}"></button></a>
                 <a th:href="@{'update-wish/' + ${wish.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}">✏️</button></a>
 
                 <a th:href="@{'reserve-wish/' + ${wish.id}}">
-                    <button th:if="${user.id != wishlistObject.ownerId}"></button>
+                    <div th:if="${user.id != wishlistObject.ownerId}">
+                    <button class="status-free" th:if="${wish.isReserved == true}">Reserveret</button>
+                    <button class="status-reserved" th:if="${wish.isReserved == false}">Ledig</button>
+                    </div>
                 </a>
             </td>
         </tr>

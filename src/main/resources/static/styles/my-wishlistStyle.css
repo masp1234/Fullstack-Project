@@ -406,3 +406,19 @@ margin-top: 6%;
 .table-input .btn {
     margin-left: 65%;
 }
+
+
+.status-free {
+background-color: #3EB489;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 10px;
+    border-radius: 10px;
+    border-style: none;
+}
+.status-reserved {
+    background-color: #FC2525;
+font-family: 'Raleway', sans-serif;
+border-radius: 10px;
+border-style: none;
+text-align: center;
+}
