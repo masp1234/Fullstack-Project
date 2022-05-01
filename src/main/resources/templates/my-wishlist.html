@@ -62,7 +62,7 @@
             <th>PRIS</th>
             <th>LINK</th>
             <th th:if="${user.id != wishlistObject.ownerId}">RESERVERET</th>
-            <th class="header-action">HANDLING</th>
+            <th class="header-action"  th:if="${user.id == wishlistObject.ownerId}">HANDLING</th>
         </tr>
         </thead>
         <tbody>
@@ -118,16 +118,16 @@
                  <a class="btn btn-danger" th:href="@{'/delete/' + ${wish.id}}">Slet</a>-->
                 <!-- <a class="btn btn-warning" onclick="openFormUpdateWishlist()">Rediger</a>-->
 
-
+        <!--
         <div th:if="${user.id != wishlistObject.ownerId}">
             <td class="align-middle" th:if="${wish.isReserved == true}">Ja</td>
             <td class="align-middle" th:unless="${wish.isReserved == true}">Nej</td>
          </div>
+        -->
 
 
 
-
-            <td class="">
+            <td>
                 <a onclick="return confirm('Er du sikker på, at du vil slette dette ønske?')" th:href="@{'/delete/' + ${wish.id}}"> <button type="button" class="btn-close btn-danger" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}"></button></a>
                 <a th:href="@{'update-wish/' + ${wish.id}}"> <button type="button" class="edit btn-outline-warning" aria-label="Close" th:if="${user.id == wishlistObject.ownerId}">✏️</button></a>
 
@@ -244,6 +244,8 @@
         </div>
     </form>
 </div>
+
+<div th:replace="footer :: footer"></div>
 
 </body>
 </html>

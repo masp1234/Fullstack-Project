@@ -31,7 +31,7 @@ tbody {
 
 }
 .headerTable{
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
 }
 
 .table .header-name {
@@ -409,16 +409,14 @@ margin-top: 6%;
 
 
 .status-free {
-background-color: #3EB489;
+    background-color: #f2003c;
     font-family: 'Raleway', sans-serif;
-    border-radius: 10px;
     border-radius: 10px;
     border-style: none;
 }
 .status-reserved {
-    background-color: #FC2525;
-font-family: 'Raleway', sans-serif;
-border-radius: 10px;
-border-style: none;
-text-align: center;
+    background-color: #3EB489;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 10px;
+    border-style: none;
 }
